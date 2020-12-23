@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+	div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.space{
+	margin: 0px 3px;
+
+}
+.border{
+	width:185px;
+}
+.box_h{
+	border:solid black 1px; 
+	padding: 10px;
+	width:39px;
+	height:25px;
+}
+.box{
+	border:solid black 1px; 
+	padding: 10px;
+	width:28px;
+	height:27px;
+}
+.emoji{
+	border:solid black 1px;
+	height:115px; width:147px;
+	text-align: center
+}
+.color_red{
+	background-color:red; 
+}
+.color_blue{
+	background-color:blue; 
+}
+.color_yellow{
+	background-color:yellow; 
+}
+.color_green{
+	background-color:green; 
+}
+.star{
+	font-size: 30px
+
+}
+.star_color_yellow{
+	color:yellow;
+}
+
+.star_color_red{
+	color:red;
+}
+.star_color_green{
+	color:green;
+}
+.star_color_blue{
+	color:blue;
+}
+
+.dice {
+	font-size: 80px;
+	text-align: center;
+	cursor: pointer;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit">
+		<div style=" width:800px;">
+			<div style="border:solid black 1px; width:780px">
+				<div class="hsplit" style=" width:800px;">
+				<div class="border" style="  ;width:300px; height:230px">
+					<div style="" class="hsplit">
+						<div class="emoji color_green">
+							<span class="material-icons" style="font-size: 70px;" ng-click="emoji_function()">
+							sentiment_very_satisfied
+							</span>
+						</div>
+						<div class="emoji color_green">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+					</div>
+					<div style="" class="hsplit">
+						<div class="emoji color_green">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+						<div class="emoji color_green">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="border">
+					<div  class="hsplit">
+						<div class="box_h"></div>
+						<div class="box_h color_yellow" style=""></div>
+						<div class="box_h">
+							<span class="material-icons" style="font-size: 30px;">
+							support
+							</span>
+						</div>
+					</div>
+
+					<div  class="hsplit">
+						<div class="box_h" ></div>
+						<div class="box_h color_yellow" ></div>
+						<div class="box_h" >
+							<span class="material-icons star star_color_yellow">
+							star_rate
+							</span>
+						</div>
+					</div>
+					<div  class="hsplit">
+						<div class="box_h" >
+							<span class="material-icons  star star_color_yellow">
+							star_rate
+							</span>
+						</div>
+						<div class="box_h color_yellow" ></div>
+						<div class="box_h" ></div>
+					</div>
+					<div  class="hsplit">
+						<div class="box_h" ></div>
+						<div class="box_h color_yellow" ></div>
+						<div class="box_h" ></div>
+					</div>
+					<div  class="hsplit">
+						<div class="box_h" ></div>
+						<div class="box_h color_yellow" ></div>
+						<div class="box_h" ></div>
+					</div>
+				</div>
+
+
+
+				<div class="border" style=" width:300px;">
+					<div style="" class="hsplit">
+						<div class="emoji color_yellow">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+						<div class="emoji color_yellow">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+					</div>
+					<div style="" class="hsplit">
+						<div class="emoji color_yellow">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+						<div class="emoji color_yellow">
+							<span class="material-icons" style="font-size: 70px;">
+							sentiment_very_satisfied
+							</span>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+	<!-- ------2222 -->
+</div>
+
+<!-- ------------------ -->
+	  <div  class="hsplit" style=" padding:10px;">
+	  		<div style=" margin:10px 40px;">
+	  			<span class="material-icons star_color_green" style="font-size: 100px;">
+				person
+				</span>
+	  		</div>
+	  		<div style=" margin:20px; height:100px; width:80px">
+	  			<div>
+	  				<span class="material-icons dice" ng-click='play_dice()' >
+					casino
+					</span>
+	  			</div>
+	  			<div style="border:solid black 2px; padding:8px 0px; border-radius: 3px; text-align: center;">{{dice_value}}
+
+	  			</div>
+	  		</div>
+	  		<div style=" margin:10px 40px;">
+	  			<span class="material-icons star_color_yellow" style="font-size: 100px; ">
+				person
+				</span>
+	  		</div>
+	  		<input type="text" ng-model="emoji">
+	  </div>
+	</div>
+		
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.emoji=true
+	$scope.dice_value = "--"
+
+	$scope.play_dice = function() {
+		$scope.dice_value = 1 + new Date().getMilliseconds() % 6
+	}
+
+	$scope.emoji_function=function(){
+		var list=[1,2,3,4,5,6]
+		for(i in list){
+			if(list[i]==1 || list[i]==6){
+				$scope.emoji=!$scope.emoji
+		}	
+		}
+		
+	}
+
+});
+</script>
+</body>
+</html>

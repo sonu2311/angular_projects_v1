@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+div.hsplit:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.number {
+	padding: 5px;
+	margin:20px 20px;
+	border-radius: 50%;
+	border:solid #ccc 1px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+}
+
+.number:hover {
+	background-color: #e6e6ff;
+}
+
+.number:focus, .number:active {
+	outline:0;
+	background-color: #c6c6ff;
+}
+
+</style>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div style="border:solid black 1px; width: 300px;">
+	<div style="border:solid black 1px; padding:10px; text-align: right; height: 20px;">{{x}}</div>
+	<div  class="hsplit" style="padding:5px 0px;">
+		<button class="number"  ng-click="f(1)">1</button>
+		<button class="number" ng-click="f(2)">2</button>
+		<button class="number" ng-click="f(3)"  >3</button>
+		<button class="number" ng-click="f(4)" >4</button>
+		<button class="number" ng-click="f(5)" >5</button>
+
+		<button class="number" ng-click="f(6)">6</button>
+		<button class="number" ng-click="f(7)" >7</button>
+		<button class="number" ng-click="f(8)" >8</button>
+		<button class="number" ng-click="f(9)" >9</button>
+	
+		<button class="number" ng-click="f(0)" >0</button>
+		<button class="number" ng-click="f('+')">+</button>
+		<button class="number"  ng-click='sum()' >=</button>
+		<button class="number"  >-</button>
+		<button class="number"  >*</button>
+		<button class="number" ng-click="cancle()" >C</button>
+
+		<button class="number"  >/</button>
+		<button class="number"  >
+		 <span class="material-icons" style="font-size: 15px; text-align: center; padding-left: 4px;">
+			arrow_back_ios
+			</span>
+		</button>
+	</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.x="";
+	$scope.f=function(y){
+		$scope.x+=y;
+	}
+
+	$scope.cancle=function(){
+		$scope.x="";
+	}
+
+	$scope.sum=function(){
+		console.log("gggghgh")
+		var l=[""];
+		var symbol="";
+		for (i in $scope.x){
+			if( $scope.x[i]=="+"){
+				l.push("")	
+			}
+			else{
+				l[l.length-1]=$scope.x[i]
+			}
+		}
+		console.log(l)
+		var k=0;
+		for (i in l){
+			
+			k+=parseInt(l[i])
+		}
+		$scope.x=k
+	}
+});
+</script>
+</body>
+</html>

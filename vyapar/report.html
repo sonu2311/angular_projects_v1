@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+
+
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.big_div_in_report{
+	border:solid black 1px; width: calc(100vw - 250px); text-align: center; margin-top: 60px; height: calc(100vh - 60px)
+}
+.scrolwer_div{
+	border:solid red 1px;height: calc(100vh - 60px);width: 220px;overflow-y: scroll; text-align: left;
+}
+.big_div_after_scroler{
+	border:solid green 1px; width: calc(100% - 220px);height: calc(100vh - 60px);
+}
+.report_type{
+	
+	font-weight: 500;
+	font-size: 16px;
+	padding: 8px;
+	/*margin: 10px 10px;*/
+}
+.report_type:hover{
+	background-color: #cccccc;
+	cursor: pointer;
+}
+.report_type_background_color{
+	background-color: #f0f5f5;
+}
+
+.report_name{
+	padding-left: 15px; font-weight: 450;font-size: 14px; 
+}
+.report_name_background_color{
+	background-color: white;
+	padding: 3px;
+}
+.report_name_background_color:hover{
+	background-color: #cccccc;
+	cursor: pointer;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit">
+		<div class="big_div_in_report hsplit" style=" float: right;">
+			<div class="scrolwer_div">
+				<div class="report_type_background_color" ng-repeat="(key,value) in report_dic">
+					<div class="report_type" >{{key}}</div>
+					<div  class="report_name_background_color" ng-repeat="y in value">
+						<div class="report_name">{{y.report_name}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="big_div_after_scroler">kljkk</div>
+		</div>
+	</div>
+
+
+
+<script>
+var app = angular.module('myApp', ['ngAnimate']);
+app.controller('myCtrl', function($scope) {
+	$scope.report_dic={
+		"Transection report":[
+								{"report_name":"Sale", "report_link":""},
+								{"report_name":"Purchase", "report_link":""},
+								{"report_name":"Day book", "report_link":""},
+								{"report_name":"All Transection", "report_link":""},
+								{"report_name":"Cash flow", "report_link":""},
+								{"report_name":"Balance Sheet", "report_link":""}
+							],
+		"Party report":[
+						{"report_name":"Party Statement", "report_link":""},
+						{"report_name":"All parties", "report_link":""},
+						{"report_name":"Party Report By Item", "report_link":""},
+						{"report_name":"Sale Purchase By Party ", "report_link":""},
+						{"report_name":"Sale Purchase By Party Group", "report_link":""}
+						],
+		"GST report":[
+						{"report_name":"GSTR 1", "report_link":""},
+						{"report_name":"GSTR 2", "report_link":""},
+						{"report_name":"GSTR 3B", "report_link":""},
+						{"report_name":"GSTR 9", "report_link":""}	
+					],
+		"Item/Stock report":[
+							{"report_name":"Stock Summary", "report_link":""},
+							{"report_name":"Item Report By Party", "report_link":""},
+							{"report_name":"Item Wise Profit And Loss", "report_link":""},
+							{"report_name":"Low Stock Summary", "report_link":""},
+							{"report_name":"Stock Detail", "report_link":""},
+							{"report_name":"Item Detail", "report_link":""},
+							{"report_name":"Item Stock Tracking Report", "report_link":""}
+					],
+		"Business Status":[
+							{"report_name":"Bank Statement", "report_link":""},
+							{"report_name":"Discount Report", "report_link":""},
+							{"report_name":"Tax Report", "report_link":""},
+							{"report_name":"Tax Rate Report", "report_link":""}
+		],
+
+		"Expense report":[
+						{"report_name":"Expense Expense Category Report", "report_link":""},
+						{"report_name":"Expanse Item Report", "report_link":""}
+		],
+		"Sale/ Purchase Order report":[
+										{"report_name":"Sale/ Purchase Order", "report_link":""},
+										{"report_name":"Sale/ Purchase Order Item", "report_link":""}
+		],
+		"Loan Accounts":[
+							{"report_name":"Loan Statement", "report_link":""}
+		]
+
+	}
+
+});
+</script>
+</body>
+</html> 
+<!-- Transection report-
+Sale
+Purchase
+Day book
+All Transection
+Cash flow
+Balance Sheet
+
+Party report
+Party Statement
+All parties
+Party Report By Item
+Sale Purchase By Party
+Sale Purchase By Party Group
+
+GST report
+GSTR 1
+GSTR 2
+GSTR 3b
+GSTR 9
+
+
+Item/Stock report-
+Stock Summary
+Item Report By Party
+Item Wise Profit And Loss
+Loe Stock Summary
+Stock Detail
+Item Detail
+Item Stock Tracking Report
+
+Business Status-
+Bank Statement
+Discount Report
+Tax Report
+Tax Rate Report
+
+Expense report-
+Expense Expense Category Report
+Expanse Item Report
+
+Sale/ Purchase Order report
+Sale/ Purchase Order
+Sale/ Purchase Order Item
+
+Loan Accounts-
+Loan Statement
+ -->

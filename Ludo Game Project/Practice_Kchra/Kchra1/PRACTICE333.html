@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.box{
+	border:solid black 1px;
+	width:520px;
+}
+.box1{
+	border:solid black 1px;
+	padding:10px;
+	height:30px;
+	width:30px;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+.icon {
+	cursor: pointer;
+	height: 5px;
+}
+
+.box1:hover {
+	overflow: initial;
+}
+
+.box1:hover > .icon {
+	height: 12px;
+}
+
+.goti_style {
+  text-shadow: 0 0 3px #000, 0 0 3px #000;
+  /*position: relative;*/
+}
+
+.goti_style:hover {
+	z-index: 4;
+}
+.float_div{
+	float:right;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div  class="hsplit box">
+		<div class="box1" ng-repeat="x in list">
+			<div class="icon" ng-repeat="z in goties" ng-if="x==z.position" ng-style="{'color': z.color} " ng-click="apply($index)">
+				<span class="material-icons goti_style" >
+					stop_circle
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="hsplit box">
+		<div class="box1" style="margin:70px;" ng-repeat="x in list3">
+			<div class="icon" ng-repeat="z in goties" ng-if="x==goties[$index].position" ng-style="{'color': z.color} " ng-click="apply($index)">
+					<span class="material-icons goti_style" >
+						stop_circle
+					</span>
+				</div>
+			
+		</div>
+		<div style="float:right">
+			<div class="box1" ng-repeat="x in list2">
+				<div class="icon" ng-repeat="z in goties" ng-if="x==goties[$index].position" ng-style="{'color': z.color} " ng-click="apply($index)">
+					<span class="material-icons goti_style" >
+						stop_circle
+					</span>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div>
+		<input type="number" style="margin-top: 20px;" ng-model="y" >
+	</div>
+<script>
+var app = angular.module('myApp', [])
+app.controller('myCtrl', function($scope) {
+	$scope.list=[]
+	$scope.y=1
+	
+	$scope.goties=[{"position": 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 0, "color": "red"},
+					{position: 1, "color":"blue"},
+					{position: 1, "color":"blue"},
+					{position: 4, "color":"yellow"},
+					{position: 3, "color":"yellow"},
+					{position: 0, "color":"green"}
+					]
+	// $scope.goties=[]
+	// var num_goti = 3
+	// var i = 0
+	// $scope.color=["red", "yellow", "blue","orenge"]
+	// while(i < num_goti) {
+	// 	$scope.goties.push({"position": 0, "color":"red"})
+	// 	i++
+	// }
+	
+	function range(x) {
+		var i=0;
+    	var l=[]
+    	while (i<x) {
+    		l.push(i)
+       		i+=1	
+    	}
+	    return l
+	}
+	$scope.list=range(10)
+	$scope.list2=[10, 11, 12, 13, 14, 15]
+	$scope.list3=[16]
+
+	var total_len = $scope.list.length + $scope.list2.length+$scope.list3.length
+
+	console.log($scope.list)
+
+	$scope.apply=function(p) {
+		$scope.goties[p].position=($scope.goties[p].position + parseInt($scope.y))%total_len
+	}
+
+});
+</script>
+</body>
+</html>

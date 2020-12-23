@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>Name: <input type="text" ng-model="name_party"></p>
+	<p>Age:  <input type="text" ng-model="age_party"></p>
+
+	<button ng-click="button()"> Save</button>
+	<button ng-click="delete()"> Delete</button>
+
+	<br>
+	<br>
+	
+	<div ng-repeat="x in list" style="border: solid green 1px; height:50px; ">
+		<div >{{x.name}}</div>
+		<div>{{x.age}}</div>
+	</div>
+
+	
+<script>
+function store(d) {
+	localStorage["data6"] = JSON.stringify(d || {})
+}
+
+function load(default_data) {
+	return (("data6" in localStorage) ? JSON.parse(localStorage["data6"]) : default_data)
+}
+
+function clear() {
+	localStorage.removeItem("data6")
+}
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.name_party=""
+	$scope.age_party=""
+	$scope.list=[];
+
+	$scope.button=function(){
+		if($scope.name_party=="" || $scope.age_party==""){
+			alert("Input is empty.")
+		}
+		else if(par($scope.age_party)> 50){
+			alert("you are too old. You cannot fill form")
+		}
+		else{
+			$scope.list.push({name:$scope.name_party, age:$scope.age_party})
+			$scope.name_party=""
+			$scope.age_party=""
+
+		} 	
+	}
+
+	$scope.delete=function(){
+		$scope.list=[]
+	}
+});
+</script>
+</body>
+</html>

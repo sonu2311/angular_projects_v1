@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+div.fix:{
+	margin:15px;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl" >
+	<div style="border:solid black 1px; padding:10px;"  >
+		<div> <input type="checkbox" ng-model="E" ng-change="f()"> Select All</div>
+		<div> <input type="checkbox" ng-model="a" >Sonu1</div>
+		<div><input type="checkbox" ng-model="b" >Sonu2</div>
+		<div><input type="checkbox" ng-model="c" >Sonu3</div>
+		<div><input type="checkbox" ng-model="d" >Sonu4</div>	
+
+	</div>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		
+		$scope.f = function() {
+			// if($scope.E==true){ (ye bhi shi h oe niche jo likha h vo bhi shi h.)
+			// 	$scope.a=true;
+			// 	$scope.b=true;
+			// 	$scope.c=true;
+			// 	$scope.d=true;
+			// }
+			// else {
+			// 	$scope.a=false;
+			// 	$scope.b=false;
+			// 	$scope.c=false;
+			// 	$scope.d=false;
+			// }
+			$scope.a=$scope.E
+			$scope.b=$scope.E
+			$scope.c=$scope.E
+			$scope.d=$scope.E
+
+			// var l=[];
+		 //    var i = 0
+		 //    while (i < 100){
+		 //        l.append({"name": "Sonu" + str(i+1), "qq": False})
+		 //        i += 1
+		 //    $scope.E=l  
+			// }
+		 }
+	});
+</script>
+</body>

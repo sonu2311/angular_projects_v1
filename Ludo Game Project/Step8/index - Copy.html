@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+	div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.space{
+	margin: 0px 3px;
+
+}
+.border{
+	width:185px;
+}
+.box_h{
+	border:solid black 1px; 
+	padding: 10px;
+	width:39px;
+	height:25px;
+	position: relative;
+	overflow: hidden;
+	
+}
+.box{
+	border:solid black 1px; 
+	padding: 10px;
+	width:28px;
+	height:27px;
+	position: relative;
+	overflow: hidden;
+}
+.emoji{
+	border:solid black 1px;
+	height:115px; width:147px;
+	text-align: center
+}
+.color_red{
+	background-color:#ff1a1a;
+	padding-top: 25px; 
+}
+.color_blue{
+	background-color:#0040ff;
+	padding-top: 25px; 
+}
+.color_yellow{
+	background-color:#ffff4d;
+	padding-top: 25px; 
+}
+.color_green{
+	background-color:#009900; 
+	padding-top: 25px;
+}
+.star{
+	font-size: 30px
+
+}
+.star_color_yellow{
+	color:yellow;
+}
+
+.star_color_red{
+	color:red;
+}
+.star_color_green{
+	color:#33cc33;
+}
+.star_color_blue{
+	color:blue;
+}
+
+.goti_style {
+  text-shadow: 0 0 3px #000, 0 0 3px #000;
+  position: relative;
+  font-size: 30px;
+  z-index: 4;
+}
+
+.goti_style:hover {
+	z-index: 5;
+	cursor: pointer;
+	text-shadow: 0 0 5px #000, 0 0 5px #000;
+	
+}
+
+.goti_before_start {
+	font-size: 50px;
+}
+
+
+.box_h:hover {
+	overflow: initial;
+}
+
+.box:hover {
+	overflow: initial;
+}
+
+.box_h:hover > .icon {
+	height: 18px;
+}
+
+.box:hover > .icon {
+	height: 18px;
+}
+
+.icon {
+	cursor: pointer;
+	height: 5px;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit">
+		<div style=" width:800px;">
+			<div style="border:solid black 1px; width:780px">
+				<div class="hsplit" style=" width:800px;">
+					<div class="border" style="  ;width:300px; height:230px">
+						<div style=""class="hsplit">
+							<div  ng-repeat=" x in list_before_start_green" class="  emoji color_green">
+								{{x.position}}
+								<div class="icon" ng-repeat="u in goties" ng-if="x.position==u.position" ng-style="{'color': u.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+
+
+							</div>
+							
+						</div>
+					</div>
+				<!-- ==== -->
+					<div class="border hsplit">
+						<div ng-repeat='x in [list_yellow1, list_yellow2, list_yellow3]' >
+							<div ng-repeat="a in x" class="box_h" ng-style='{"background-color": a.bgcolor}'>
+								<div style="position: absolute;">
+								 	<span class="material-icons"  ng-repeat="i in star"  ng-if=" a.position==i.star_position" ng-style="{'color': i.starcolor}">
+									star
+									</span>
+								</div>
+								<div style="position: absolute;">
+									{{a.position}}
+								</div>
+								<div class="icon" ng-repeat="m in goties" ng-if="a.position==m.position" ng-style="{'color': m.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="border" style=" width:300px;">
+						<div style="" class="hsplit">
+							<div ng-repeat="n in list_before_start_yellow" class="emoji color_yellow">
+								{{n.position}}
+
+								<div class="icon" ng-repeat="u in goties" ng-if="n.position==u.position" ng-style="{'color': u.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+
+
+
+							</div>	
+						</div>
+					</div>
+				</div>
+			<!-- ----complete
+ -->
+	<!-- ------2222 -->
+			 <div class="hsplit" style=" width:800px;">
+				<div style="width:300px; ">
+					<div  class="hsplit" ng-repeat='x in [list_green1, list_green2, list_green3]' >
+						<div ng-repeat="d in x" class="box" ng-style='{"background-color": d.bgcolor}' >
+							<div style="position: absolute;" >
+								<span class="material-icons"  ng-repeat="i in star"  ng-if=" d.position==i.star_position" ng-style="{'color': i.starcolor}">
+									star
+									</span>
+
+							{{d.position}}</div>
+								<div class="icon" ng-repeat="r in goties" ng-if="d.position==r.position" ng-style="{'color': r.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:184px; height:150px;" >
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSANPoiTLnPrTVhHbxX2fs2LNaj87le7xosdQ&usqp=CAU" style="width:200px; height:150px">
+
+				</div>
+				<div class="hsplit" style="width:300px;">
+					<div style="width:300px; ">
+						<div ng-repeat='x in [list_blue1, list_blue2, list_blue3]' class="hsplit">
+							<div ng-repeat="g in x" class="box" ng-style='{"background-color": g.bgcolor}' >
+								<div style="position: absolute;" >
+									<span class="material-icons"  ng-repeat="i in star"  ng-if=" g.position==i.star_position" ng-style="{'color': i.starcolor}">
+									star
+									</span>
+
+								{{g.position}}</div>
+								<div class="icon" ng-repeat="u in goties" ng-if="g.position==u.position" ng-style="{'color': u.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			
+	<!-- ------333 -->
+			 	<div  class="hsplit" style=" width:800px;">
+					<div class="border" style=" width:300px; height:230px">
+						<div style="" class="hsplit">
+							<div  ng-repeat="z in list_before_start_red" class="emoji color_red">
+								{{z.position}}
+
+								<div class="icon" ng-repeat="u in goties" ng-if="z.position==u.position" ng-style="{'color': u.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+
+ 							</div>
+						</div>
+					</div>
+					<div class="border hsplit">
+						<div ng-repeat='x in [list_red1, list_red2, list_red3]' >
+							<div  ng-repeat="j in x" class="box_h" ng-style='{"background-color": j.bgcolor}' >
+								<div style="position: absolute;" >
+									<span class="material-icons"  ng-repeat="i in star"  ng-if=" j.position==i.star_position" ng-style="{'color': i.starcolor}">
+									star
+									</span>
+
+								{{j.position}}</div>
+								<div class="icon" ng-repeat="qq in goties" ng-if="j.position==qq.position" ng-style="{'color': qq.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="border" style="width:300px;">
+						<div style="" class="hsplit">
+							<div ng-repeat="w in list_before_start_blue" class="emoji color_blue">
+								{{w.position}}
+
+								<div class="icon" ng-repeat="u in goties" ng-if="w.position==u.position" ng-style="{'color': u.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+
+							</div>
+						</div>
+					</div>	
+				</div>	
+		</div>
+	</div>
+</div>
+	  <div  class="hsplit" style=" padding:10px;">
+	  		<div style=" margin:10px 40px;">
+	  			<span class="material-icons star_color_red" style="font-size: 100px;">
+				person
+				</span>
+	  		</div>
+	  		<div style=" margin:20px; height:100px; width:80px">
+	  			<div>
+	  				<span class="material-icons" style="font-size: 80px; text-align: center;">
+					casino
+					</span>
+	  			</div>
+	  			<div style="border:solid black 2px; padding:8px 0px; border-radius: 3px; text-align: center;">number</div>
+	  		</div>
+	  		<div style=" margin:10px 40px;">
+	  			<span class="material-icons star_color_green" style="font-size: 100px; ">
+				person
+				</span>
+	  		</div>
+	  		<p><input type="number"	ng-model="y"></p>
+	  </div>
+	</div>
+	<div>
+		<select ng-model="turn">
+			<option ng-repeat="x in ['red', 'blue', 'yellow', 'green']">{{x}}</option>
+		</select>
+	</div>
+	<p>{{turn}}</p>
+<script>
+
+var double_range=function(x, y, inc, ppp) {
+	if (inc === undefined) {
+		return []
+	}
+	if (inc <= 0 && y > x) {
+		return []
+	}
+	if (inc >= 0 && y < x) {
+		return []
+	}
+	var l = []
+   	var i = x
+    while(i != y) {
+    	l.push({position: i, "bgcolor": ppp})
+    	i += inc
+    }
+    return l
+}
+
+var join_list=function(l1,l2) {
+	for (i in l2){
+	 	l1.push(l2[i])
+	}
+    return l1	
+}
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	s = $scope
+
+ 	$scope.y = 6
+
+$scope.star=[
+				{"star_position" : 0, "starcolor":"green"},
+				{"star_position" : 47, "starcolor":"green"},
+				{"star_position" : 13, "starcolor":"yellow"},
+				{"star_position" : 8, "starcolor":"yellow"},
+				{"star_position" : 34, "starcolor":"red"},
+				{"star_position" : 39, "starcolor":"red"},
+				{"star_position" : 26, "starcolor":"blue"},
+				{"star_position" : 21, "starcolor":"blue"}]
+			
+	
+	$scope.list_before_start_green = double_range(72, 76, 1, "green")
+
+	$scope.list_before_start_yellow = double_range(76, 80, 1,"yellow")
+
+	$scope.list_before_start_red = double_range(84,88 , 1, "red")
+
+	$scope.list_before_start_blue =double_range(80, 84, 1, "blue")
+
+
+	$scope.list_yellow1 = double_range(10, 4, -1, "white")
+
+	$scope.list_yellow2 = join_list([{position: 11, bgcolor: "white"}],double_range(57, 62,1,"#ffff4d"))
+
+	$scope.list_yellow3 = double_range(12, 18, 1, "white")
+	$scope.list_green1= join_list(
+		[{position: 51, bgcolor: "white"}],
+		double_range(0, 5, 1, "white"))
+
+	$scope.list_green2= join_list(
+		[{position: 50, bgcolor: "white"}],
+		double_range(52, 57, 1, "#009900"))
+
+	$scope.list_green3=double_range(49, 43, -1, "white")
+	
+	$scope.list_blue1= double_range(18, 24, 1, "white")
+	
+	$scope.list_blue2=join_list(
+		double_range(66,61,-1, "#0040ff"), [{position: 24, bgcolor: "white"}])
+
+	$scope.list_blue3=double_range(30, 24, -1, "white")
+	
+
+	$scope.list_red1=double_range(43, 37, -1, "white")
+	
+	$scope.list_red2=join_list(
+		double_range(71,66,-1, "#ff1a1a"), [{position: 37, bgcolor: "white"}])
+
+	$scope.list_red3=double_range(31, 37, 1, "white")
+
+	$scope.goties=[
+					{position: 76, "color": "yellow"},
+					{position: 84, "color": "red"},
+					{position: 85, "color": "red"},
+					{position: 86, "color": "red"},
+					{position: 87, "color": "red"},
+					{position: 73, "color": "green"},
+					{position: 75, "color": "green"},
+					{position: 74, "color": "green"},
+					{position: 83, "color":"blue"},
+					{position: 82, "color":"blue"},
+					{position: 81, "color":"blue"},
+					{position: 80, "color":"blue"},
+					{position: 72, "color":"green"},
+					{position: 78, "color":"yellow"},
+					{position: 77, "color":"yellow"},
+					{position: 79, "color":"yellow"},
+					]   
+	
+	// var box_ki_goti_list = function(goties, box_position){
+	//   var i=0
+	//    var l=[]
+	//     while (i < goties.length) {
+	//        if (goties[i].position == box_position){
+	//           l.push(i)
+	//        }   
+	//        i+=1
+	//     }  
+	//     return l
+	// }
+
+	// var kato_goti = function(box_position, goti_index) {
+	// 	var is_box_me_pdi_sari_goti_ki_list = box_ki_goti_list($scope.goties, box_position)
+	// 	for (q in is_box_me_pdi_sari_goti_ki_list) {
+	// 		var index = is_box_me_pdi_sari_goti_ki_list[q]
+	// 		if ($scope.goties[index].color != $scope.goties[goti_index].color) {
+	// 			$scope.goties[index].position = d_dictionary[$scope.goties[index].color].beforposition[0];
+	// 		}
+	// 	}
+	// }
+	var d_dictionary={
+		"red" :{
+			"startindex" : 39,
+			"beforposition": [84,85,86,87],
+			"last_in_main_track" :37,
+			"start_inner_track" : 67,
+		},
+		"blue" :{
+			"startindex" : 26,
+			"beforposition": [80,81,82,83],
+			"last_in_main_track" :24,
+			"start_inner_track" : 62,
+		},
+		"yellow" :{
+			"startindex" : 13,
+			"beforposition": [76,77,78,79],
+			"last_in_main_track" :11,
+			"start_inner_track" : 57,
+		},
+		"green" :{
+			"startindex" : 0,
+			"beforposition": [72,73,74,75],
+			"last_in_main_track" :50,
+			"start_inner_track" : 52,
+		}
+	}
+
+
+	var belongs = function(l, p){
+		 for(i in l){
+	        if (l[i]==p){
+	        	return true
+	        }       
+	   }
+	   return false
+	}
+
+	var total_len =52
+	$scope.turn="red"
+
+	$scope.apply=function(p) {
+		console.log("Old position = " + $scope.goties[p].position)
+		console.log("Changed goti index = " + p)
+		console.log("Dice value = " + $scope.y)
+
+		var pos = $scope.goties[p].position
+		var start_in = d_dictionary[$scope.turn].start_inner_track
+
+		if ($scope.goties[p].color==$scope.turn) {
+			if (belongs(d_dictionary[$scope.turn].beforposition, $scope.goties[p].position)) {
+				if ($scope.y == 6) {
+					$scope.goties[p].position=d_dictionary[$scope.turn].startindex
+				} else {
+					alert("Khata kholne ke liye 6 chahiye beta.")
+				}
+			} 
+			else {
+				if (pos <= d_dictionary[$scope.turn].last_in_main_track && pos + $scope.y >  d_dictionary[$scope.turn].last_in_main_track ) {
+					$scope.goties[p].position = d_dictionary[$scope.turn].start_inner_track + $scope.y-(d_dictionary[$scope.turn].last_in_main_track - pos + 1)
+				} else {
+					if (pos >= start_in) {
+						if (pos + $scope.y > start_in + 5) {
+							alert("Thoda kam lana tha")
+						} else {
+							$scope.goties[p].position = pos + $scope.y
+						}
+					} else {
+						$scope.goties[p].position=($scope.goties[p].position + parseInt($scope.y))%total_len
+					}
+				}
+				if ($scope.goties[p].position == start_in + 5) {
+					$scope.goties[p].position = 1000
+					alert("Wow!")
+				}
+				kato_goti($scope.goties[p].position, p);
+			}	
+		} else {
+				alert("Tumhara Turn Ni Hai.. Niklo yaha se")
+		}
+		console.log("New position = " + $scope.goties[p].position)
+	}
+
+});
+
+</script>
+</body>
+</html>
+
+<!-- var box_ki_goti_list= function(goties, box_position){
+  var i=0
+   var l=[]
+    while (i < goties.length) {
+       if (goties[i].position == box_position){
+          l.push(i)
+       }   
+       i+=1
+    }  
+    return l
+}            
+console.log(search([
+		{position: 76, color: "yellow"},
+		{"position": 84, "color": "red"},
+		{"position": 85, "color": "red"},
+		{"position": 77, "color": "red"},
+		{"position": 77, "color": "green"},
+		{"position": 79, "color":"yellow"}
+		],77)) -->
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit" >
+		<div   ng-repeat='y in list2'style="margin:5px;"  >	
+		 	<span class="material-icons" style="font-size: 85px;" ng-style="{'color':(list3[y] ?  'red':'blue')}" ng-click="light_button(y)">
+				emoji_objects 
+			</span>	
+			<div style=";text-align: center;">{{y}}</div>
+		</div>
+	</div>
+	
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.list=["red", "yellow", "green", "black"]
+	
+  $scope.button= false
+
+	$scope.light_button=function(x) {
+			$scope.list3[x] = !$scope.list3[x]
+			console.log(x*2)
+	}
+	function range(x) {
+		var i=0;
+    	var l=[]
+    	while (i<x) {
+    		l.push(i)
+       		i+=1	
+    	}
+	    return l
+	}
+
+	function false_list(n) {
+		var i=0;
+    	var l=[]
+    	while (i<n) {
+    		l.push(false)
+       		i+=1	
+    	}
+	    return l
+	}
+	$scope.list2 = range(100)
+	$scope.list3 = false_list(100)
+    
+        
+
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+
+
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.company{
+	width:253px; height:68px; background-color:#343a40; color:#c1c1a4; text-align: center; padding: 15px 
+}
+.search_icon{
+	 margin:7px;
+} 
+.search_input{
+	border:none; outline: none; width:500px; margin:17px 0px; padding:5px;
+}
+.sale_button{
+	width:140px; margin:13px 0px; padding:10px; border-radius: 20px; border:none; outline: none; background-color:#cc0000 
+}
+.sale_button:hover{
+	 padding:12px;
+	 margin:11px 0px;
+}
+.purchase_button{
+	width:140px; margin:13px 0px; padding:10px; border-radius: 20px; border:none; outline: none; background-color: #1a1aff
+}
+.add_more{
+	width:140px; margin:13px 0px; padding:8px; border-radius: 20px; border:none; outline: none; background-color: #2E8B57
+}
+.all_button{
+	 margin:0px 5px;
+}
+.main_screen_div{
+	 border-bottom:solid grey 2px;height:70px; background-color: white;
+}
+.setting_icon{
+	margin: 20px; color: grey; font-size: 30px;
+}
+.setting_icon:hover{
+	cursor: pointer;
+}
+.menu_first_div{
+	 /*border:solid blue 1px;*/
+	color:white;
+	background-color:#343a40;
+	color:#c1c1a4;
+	text-align: center;
+	padding:5px; 
+}
+
+.menu_first_div:hover{
+	 background-color: black;
+	 cursor: pointer;
+	 color: white;
+
+}
+.home_page_mid_div{
+	border:none; box-shadow: 1px 1px 4px grey; height: 130px; width: 230px; margin:12px; border-radius: 8px; background-color:white; 
+}
+.home_page_mid_div:hover{
+	 cursor: pointer;
+}
+
+.scroll_div {
+	/*border: solid red 1px;*/
+	height: calc(100vh - 100px);
+	width: 270px;
+	overflow-y: scroll;
+}
+.dropdown{
+	background-color: #070313; color:grey; padding-left: 45px;
+}
+.dropdown:hover{
+	background-color: black;
+	 cursor: pointer;
+	 color: white;
+}
+
+
+div.dropdown {
+	transition: all ease-out 0.6s;
+	overflow-y: hidden;
+	max-height: 300px;
+}
+
+div.dropdown.ng-hide {
+	max-height: 0px;
+}
+.inside_dropdown{
+	font-size: 15px; float: right; 
+}
+.popup_big_div{
+	width:100vw; height: calc(100vh - 100px); position:fixed; top:100px; right:0px; z-index: 50px; background-color: rgba(0, 0, 0, 0.4);
+}
+.popup_small_div{
+	 border-radius: 5px; width:700px; height: 500px; position:fixed; top:120px; right:200px; z-index: 100px; background-color: white;
+}
+.popup_horizontal_div{
+	font-weight: 700; margin: 15px; padding: 5px; font-size: 17px;
+}
+.small_popup_div{
+	border-bottom: solid white 2px;
+	margin: 15px; padding: 5px;
+}
+.small_popup_div:hover{
+	border-bottom: solid #4d94ff 2px;
+	cursor: pointer;
+	color:#4d94ff;
+}
+
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div style="background-color: #f0f5f5">
+		<div style="border:solid black 1px; text-align: center">VYAPAR</div>
+		<div class="hsplit main_screen_div" >
+			<div class="company">Company name</div>
+			<div style="">
+				<span class="material-icons search_icon"  >
+				search
+				</span>
+				<input placeholder="Search Transection" class="search_input">
+			</div>
+			
+			<div  class="all_button" >
+				<a href="vyapar.sale,report.html">
+					<button class="sale_button">Sale</button>
+				</a>	
+			</div>
+			
+			<div class="all_button">
+				<a href="vyapar.purchase,report.html">
+					<button class="purchase_button">Purchase</button>
+				</a>
+			</div>
+			<div class="all_button" >
+				<button class="add_more" ng-click="f()" >Add more</button>
+			</div>
+			<div style=" margin:0px 4px; " >
+				<span class="material-icons setting_icon" >
+				settings
+				</span>
+			</div>
+		</div>
+		<div class="hsplit" style="margin: 0px;">
+			<div  style="" class="scroll_div">
+				<div ng-repeat="x in menu_list">
+					<div class="menu_first_div hsplit"  ng-click="dropdown($index)">
+						<div style="margin-left: 13px;">
+							<span class="material-icons">
+							{{x.icon}}
+							</span>
+						</div>
+						<div style=" margin-left: 15px;" >
+							{{x.homekey}}	
+						</div>
+					</div>
+					<div class="dropdown " ng-show='x.check' >
+						<div  ng-repeat="y in x.subtab" > {{y}}
+							<span class="material-icons" style="font-size: 15px; float: right; ">
+							add
+							</span>
+							<div style="clear: both;" ></div>
+						</div>	
+					</div>
+				</div>
+			
+			</div>
+			<div class="hsplit" style=" width: calc(100vw - 300px); padding: 0px 5px; text-align: center; border: solid red 1px; height: calc(100vh - 100px)">
+				<div ng-repeat="x in number_div" class="home_page_mid_div" > {{x}}
+				</div>
+			</div>
+		</div>
+
+		<!-- --<? -->
+		<div ng-if="trypopup" class="popup_big_div" >
+			<div class="popup_small_div" >
+				<div class="hsplit">
+					<div   ng-repeat="(xx, x) in dic_of_popup" style=" width: 33%; ">
+						<div class="popup_horizontal_div">{{xx}}</div>
+						<div class="small_popup_div"  ng-repeat="y in x">
+							<div class="hsplit">
+								<div >{{y.name}}</div>
+								<div style="float:right; color:grey; font-size: 12px;">{{y.shortcut}}</div>
+							</div>
+							<div style="font-size: 10px;">{{y.extra}}</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+		</div>
+	</div>
+<script>
+var app = angular.module('myApp', ['ngAnimate']);
+app.controller('myCtrl', function($scope) {
+	$scope.menu_list=[
+						{"homekey":"home", "icon":"home","subtab":[ "Sale Invoice","payment in","Estimate/Quotation", "Sale Order", "Delivery Challan", "Sale Return/ Cr.Note"], "check":false},
+						{"homekey":"parties", "icon":"supervisor_account", "subtab":""},
+						{"homekey":"item", "icon":"home","subtab":""},
+
+						{"homekey":"Sale", "icon":"home","subtab":[ "Sale Invoice","payment in","Estimate/Quotation", "Sale Order", "Delivery Challan", "Sale Return/ Cr.Note"]},
+
+						{"homekey":"Purchase", "icon":"shopping_cart","subtab":""},
+						{"homekey":"Expence", "icon":"home" ,"subtab":""},
+						{"homekey":"Cash & Bank", "icon":"account_balance","subtab":""},
+						{"homekey":"Reports", "icon":"signal_cellular_alt" ,"subtab":""},
+						{"homekey":"Backup/Restore", "icon":"home" ,"subtab":""},
+						{"homekey":"Utilities", "icon":"home","subtab":""},
+						{"homekey":"Settings", "icon":"settings" ,"subtab":""},
+						{"homekey":"Trail info", "icon":"home" ,"subtab":""},
+					]
+	 
+	 $scope.dic_of_popup={
+	 	"SALE":[{"name":"sale invoice","shortcut":"ALTt+S","extra":""},
+	 			{"name":"payment in", "shortcut":"ALT+I","extra":""},
+	 			{"name":"sale Return", "shortcut":"ALTt+R","extra":"Cr Not"},
+	 			{"name":"sale Order", "shortcut":"ALT+F","extra":""},
+	 			{"name":"Estimate/ Quotation", "shortcut":"ALT+M","extra":""},
+	 			{"name":"Delivery Challan", "shortcut":"Alt+D","extra":""}
+	 	],
+	 	"PURCHASE":[{"name":"Purchase bill","shortcut":"ALTt+P","extra":""},
+	 			{"name":"Payment Out", "shortcut":"ALT+O","extra":""},
+	 			{"name":"Purchase Return", "shortcut":"ALT+L","extra":"Dr Not"},
+	 			{"name":"Purchase Order", "shortcut":"ALT+G","extra":""}	 			
+	 	],
+	 	"OTHER":[{"name":"Estimate","shortcut":"ALTt+E","extra":""}]
+	 }
+	$scope.number_div=[1,2,3,4,5,6]
+
+	$scope.trypopup=false
+	$scope.f=function(){
+		$scope.trypopup=!$scope.trypopup
+	}
+
+	$scope.dropdown=function(n) {
+		console.log("dropdown called with value = " + n)
+		$scope.menu_list[n].check=!$scope.menu_list[n].check
+		console.log("Dict now = ", $scope.menu_list[n])
+	}
+
+});
+</script>
+</body>
+</html> 
+ <!-- width:1070px; -->

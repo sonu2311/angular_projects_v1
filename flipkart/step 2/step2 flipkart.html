@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.background_div{
+	background-color: #2874f0; padding: 8px 160px;"
+}
+.flipkart{
+	 color:white; 
+	 font-size: 15px;
+	 margin: 0px 30px;
+	font-family: Roboto,Arial,sans-serif;
+	cursor: pointer;
+	padding:0px;
+	font-weight: 600;
+}
+.search{
+	 width:350px; padding:8px 10px; background-color: white;
+	 border:none;border-radius: 2px;
+}
+.login{
+	 color:#2874f0; background-color:white; font-size: 18px; padding:4px 35px; font-family: Roboto,Arial,sans-serif; margin:0px 70px;font-weight: 600;
+	 border-radius: 1px;
+
+}
+.more{
+	 color:white; background-color: #2874f0; font-weight: 600; margin:0px 50px;
+}
+.cart{
+	 color:white; float:right;font-weight: 600; padding:0px 2px;
+}
+.nav{
+	margin:0px 40px;
+	
+}
+
+.black {
+	color: black;
+}
+.header{
+	margin:5px 55px;
+
+}
+.header:hover{
+	color:#2874f0;
+	cursor: pointer;
+}
+</style>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div style="border:solid red 1px; font-family: Roboto,Arial,sans-serif;">
+		<div class="hsplit background_div" >
+			<div class="flipkart">Flipkart<br> Explore Plus</div>
+
+			<div style="margin:0px 35px;">
+				<input  class="search" placeholder="Search your product.."></div>
+			<div  class="login">Login</div>
+
+			<div class="more" >More</div>
+			<div class="hsplit">
+				<div>
+					<span class="material-icons" style="color:white;">
+					local_grocery_store
+					</span>
+				</div>
+				<div class="cart" >Cart</div>
+			</div>
+			
+		</div>
+		<!-- ye second div h -->
+		<div class="hsplit" style="border:solid red 3px;">
+			<div class="header" ng-click='search(x)' ng-repeat="(x, y) in item_detail">{{x}}	
+			</div>
+		</div>
+		<!-- <div>detail vala div</div>-->
+		<div style="height: 0px;" ></div>
+ 		<div class="hsplit" style="border:solid green 3px; margin-left:30px;" ng-repeat='(c,d) in item_detail' ng-if="selected==c" >
+	 		<div  style=" border:solid black 1px; padding:0px 20px; " ng-repeat="(x, y) in d" >
+	 			<b>{{x}}</b>
+				<div style="font-size: 15px; padding-left: 5px;" ng-repeat="(a, b) in y">
+					{{a}}....{{b.price}}....{{b.color}}....{{b.size}}<br>
+					
+				</div>
+			</div>
+		</div>
+
+		
+
+ </div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	// $scope.header=["electronic","women", "tv","mobile","home & kichen","babys","sports","offers"]
+
+	$scope.item_detail={
+		"electronic": {
+			"mobile":{"vivo":{"price":200,
+							  "color":"red", 
+							  "size":"S"},
+					"nokia":{"price":800,
+							  "color":"white", 
+							  "size":"XS"},
+					"oppo":{"price":700,
+							  "color":"green", 
+							  "size":"XXL"},
+					"apple":{"price":900,
+							  "color":"black", 
+							  "size":"XXL"},
+					"motola":{"price":1000,
+							  "color":"grey", 
+							  "size":"XXL"}
+							},
+			"tvs & aplication":{"sumsung":{"price":500,
+							  "color":"green", 
+							  "size":"L"}},
+			"mobile acce":{"charger":{"price":2000,
+							  "color":"black", 
+							  "size":"XS"}}
+		},
+		"women": {
+			"cloths":{"duptta":{"price":200,
+							  "color":"red", 
+							  "size":"S"},
+					"shirt":{"price":800,
+							  "color":"white", 
+							  "size":"XS"},
+					"pent":{"price":700,
+							  "color":"green", 
+							  "size":"XXL"}},
+			"makeup":{"lipstic":{"price":500,
+							  "color":"green", 
+							  "size":"L"}}
+		},
+		"tvs & aplication":{
+			"LG":{"LG1":{"price":200,
+				  "color":"red", 
+				 "size":"S"}
+
+				},
+		
+			"Bajaj":{"mix":{"price":200,
+				  "color":"red", 
+				 "size":"S"}
+				},	
+		},
+	}
+
+	$scope.selected=""
+
+	$scope.search=function(catg) {
+		$scope.selected = catg
+	}
+
+});
+</script>
+</body>
+</html> 
+<!-- washing machine
+fully automatic ,
+semi automatic top load
+ air conditioners:
+ inverter ac
+ split acs
+ window ac
+ kitchen applications
+ oven,
+  toaster 
+  juicer 
+  coffee makers 
+  sandwich makers 
+ irons
+  air coolers 
+  bajaj; IFB Philips, lg m
+---
+fans
+microwavs
+mixi
+coller
+cooker
+gass
+bad
+mirorr
+book pen
+blanket
+ring
+shuit
+kurtas
+pent
+plazzo
+dersses
+top
+jakets
+jagging
+shorts
+skirts
+gowns
+sleeper
+shoes
+heels
+flats
+boots
+hair dryers
+watch
+handbags
+
+mans
+loafers
+perfumes
+dhoti
+kurta
+formal shoes
+formal shirts
+r-shirts
+jeans
+trak pants
+lungi
+fastrack casio titan fossil sonata 
+
+wallet belts sunglasses jewellery
+ sweater tracksuits sweatshirts 
+ innerwear
+  dresses$ skirts sandals sports shoes baby gifts
+  baby food diapering baby bath
+  soft toys outdoor toys action figurs
+  doll puzzles toy gun 
+  party supplies
+   school bags
+    school combo sets
+    kids watch,
+     boys jacket -->

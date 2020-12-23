@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.border{
+	
+	margin:10px;
+	padding:5px;
+	width:230px;
+	height: 360px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.border:hover {
+	box-shadow: 5px 10px 15px #888888;
+	border: #888888;
+}
+
+
+.niche_vala_div {
+	position: relative;
+	background-color: white;
+	transition: all 0.2s;
+	top: 0px;
+}
+
+.border:hover > .niche_vala_div {
+	top: -20px;
+}
+
+.big_div{
+	text-align: center;
+	padding:5px;
+	margin-bottom: 10px;
+}
+img.product_image {
+	height: 250px;
+	
+}
+.button{
+	margin-bottom: 30px;
+}
+.button:hover{
+	background-color: blue;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="hsplit" style="padding: 70px 0px; border:solid black 1px; ">
+	<div style="border:solid red 1px; width: 250px;">
+		<div style="  margin:15px; ">
+			<div style="font-weight: 600;"> Color</div>
+			<div style="margin:5px;" ng-repeat="x in color_filter_list">
+				<input type="checkbox" ng-model="x.check" ng-change='search()' > {{x.color}}
+			</div>
+		</div>
+		<div style="margin:15px;">
+			<div style="font-weight: 600;" > dress brand</div>
+			<div style="margin:5px;" ng-repeat="x in brand_filter_list">
+				<input type="checkbox" ng-model="x.check" ng-change='search()'> {{x.brand}}
+			</div>
+		</div>
+	</div>
+	<div style="border:solid red 1px; width: calc(100vw - 270px);">
+		<div class="hsplit big_div">
+			<div ng-repeat="x in displayed_product_list">
+				<div class="border"><img class="product_image" ng-src="{{x.link}}">
+					<div class="niche_vala_div" >
+						<div> {{x.price}}</div>
+						<div>{{x.name}}</div>
+						<!-- <div>{{x.title}}</div> -->
+						<div>{{x.dress_color}}</div>
+						<div>{{x.brand}}</div>
+						<div>{{x.content}}</div>
+					</div>
+				</div>
+			</div>
+			
+		</div><br><br>
+		<div style="text-align: center;" >
+		    <a type="button" class="btn btn-secondary button" href="http://www.abc.com"  ng-style='{"background-color": page_number==1 ? "green":"red"}' >1</a>
+
+		    <a type="button" class="btn btn-secondary button" href="https://www.w3schools.com/" ng-style='{"background-color": page_number==2 ? "green":"red"}' >2</a>
+
+		    <a type="button" class="btn btn-secondary button" href="https://www.maxfashion.in/in/en/department/maxwomen" >3</a>
+		    <a type="button" class="btn btn-secondary button" href="https://www.flipkart.com/plus">4</a>
+		</div>
+  	</div>
+</div>
+	  <hr>
+	  <br><br>
+
+<script type="text/javascript" src="products.js" ></script>
+<script>
+var app = angular.module('myApp', [])
+app.controller('myCtrl', function($scope) {
+	s = $scope
+	$scope.page_number=1
+
+	$scope.color_filter_list=[ {"color":"red", "check": false},
+								{"color":"white", "check": false},
+								{"color":"blue", "check":false},
+								{"color":"grey", "check":false},
+								{"color":"pink", "check":false},
+								{"color":"yellow", "check":false}
+							]
+	$scope.brand_filter_list=[ {"brand":"max", "check": false},
+								{"brand":"lifestyle", "check": false},
+								{"brand":"westren", "check": false},
+								{"brand":"trands", "check": false},
+								{"brand":"biba", "check": false},
+								{"brand":"zara", "check": false}]
+
+	
+	var m=function(l) {
+		for ( i in l ) {
+	 		if (l[i].check == true) {
+	 			return false
+		    }
+		  }
+		  return true
+	}
+
+	var matching_filter = function(filter_list, product_property, product_value) {
+	if (m(filter_list)) {
+		 	return true
+		}
+	 	for(var i in filter_list) {
+			if (filter_list[i][product_property] == product_value && filter_list[i].check == true) {
+        	return true
+        	}
+    	}
+	    return false
+	}
+
+	$scope.check = function(product) {
+		var m1 = matching_filter($scope.color_filter_list, "color", product.dress_color)
+		var m2 = matching_filter($scope.brand_filter_list, "brand", product.brand)
+		return m1 && m2
+	}
+
+ 
+	$scope.shortlist = function(all_products_list) {
+	 	var l=[]
+		for(var i in all_products_list) {
+		  	if($scope.check(all_products_list[i])){
+		    	l.push(all_products_list[i])
+		    }
+		}
+		return l
+	}
+
+	$scope.search = function() {
+		$scope.displayed_product_list = $scope.shortlist(all_products_list)
+	}
+
+	$scope.search()
+
+});
+</script>
+</body>
+</html>

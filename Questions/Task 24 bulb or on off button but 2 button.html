@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit" >
+		<div style="margin:35px 5px;" >
+			<img src="images/button_on.png" style="width: 100px;" ng-if="button==true" ng-click="light_button()" >
+			<img src="images/button_off.png" style="width: 100px;" ng-if="button==false" ng-click="light_button()">
+		</div>
+
+		<div style="margin:5px;">
+		 	<span class="material-icons" style="font-size: 100px;" ng-style="{'color':(button ?  'blue':'black')}">
+				emoji_objects
+			</span>
+		</div>
+	</div>
+	<div class="hsplit" >
+		<div style="margin:35px 5px;">
+			<img src="images/button_on.png" style="width: 100px;" ng-if="button_second==true" ng-click="light_button_second()" >
+			<img src="images/button_off.png" style="width: 100px;" ng-if="button_second==false" ng-click="light_button_second()">
+		</div>
+
+		<div style="margin:5px;">
+		 	<span class="material-icons" style="font-size: 100px;" ng-style="{'color':(button_second ?  'blue':'black')}">
+				emoji_objects
+			</span>
+		</div>
+	</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.button=false;
+	$scope.light_button=function(){
+		$scope.button = !$scope.button
+		$scope.button_second = false
+	}
+	$scope.button_second=false;
+	$scope.light_button_second=function(){
+		$scope.button_second = !$scope.button_second	
+		$scope.button = false
+	}
+});
+</script>
+</body>
+</html>

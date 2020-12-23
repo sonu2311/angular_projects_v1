@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.border{
+	
+	margin:10px;
+	padding:5px;
+	width:230px;
+	height: 360px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.border:hover {
+	box-shadow: 5px 10px 15px #888888;
+	border: #888888;
+}
+
+
+.niche_vala_div {
+	position: relative;
+	background-color: white;
+	transition: all 0.2s;
+	top: 0px;
+}
+
+.border:hover > .niche_vala_div {
+	top: -20px;
+}
+
+.big_div{
+	text-align: center;
+	padding:5px;
+	margin-bottom: 10px;
+}
+img.product_image {
+	height: 300px;
+	
+}
+.button{
+	margin-bottom: 30px;
+}
+.button:hover{
+	background-color: blue;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="hsplit big_div">
+	<div ng-repeat="x in list">
+		<div class="border"><img class="product_image" src="{{x.link}}">
+			<div class="niche_vala_div" >
+				<div> {{x.price}}</div>
+				<div>{{x.title}}</div>
+				<div>{{x.content}}</div>
+			</div>
+		</div>
+	</div>
+	
+</div><br><br>
+<div style="text-align: center;" >
+    <a type="button" class="btn btn-secondary button" href="http://www.abc.com"  ng-style='{"background-color": page_number==1 ? "green":"red"}' >1</a>
+
+    <a type="button" class="btn btn-secondary button" href="https://www.w3schools.com/" ng-style='{"background-color": page_number==2 ? "green":"red"}' >2</a>
+
+    <a type="button" class="btn btn-secondary button" href="https://www.maxfashion.in/in/en/department/maxwomen" >3</a>
+    <a type="button" class="btn btn-secondary button" href="https://www.flipkart.com/plus">4</a>
+</div>
+
+  <hr>
+  <br><br>
+
+<script>
+var app = angular.module('myApp', [])
+app.controller('myCtrl', function($scope) {
+	$scope.page_number=1
+	$scope.list=[
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/jvfk58w0/dress/e/d/u/m-2520961-dressberry-original-imafgbmjgdr5ybhz.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/kesv0y80/dress/d/y/m/l-rd-2001-radius-export-import-original-imafven4vvmrv3px.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/jpu324w0/dress/z/b/j/m-aa-0119-boho-long-dress-aayu-original-imafbz74rzgwhztq.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/jxuq07k0/dress/p/y/v/free-dress-1010-rangun-original-imafg7n76fkyuuws.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k572gsw0/dress/e/u/y/s-maxy-dress-196-black-daevish-original-imafnxw5wwtgjp3q.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k45x0nk0/dress/g/b/k/m-western-dress-dr39a-metro-fashion-original-imafn4mc5gcyanvm.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/jwfa5jk0/dress/4/d/g/m-gr5759-black-harpa-original-imafh43kuk5z295k.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k76ihe80/dress/n/c/d/s-one-piece-orrange-line-maa-fab-original-imafph3nakcmenhr.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/kar44280/dress/s/u/g/xs-gaurgeous780-gaurgeous-original-imafs9g4w3zqjzup.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/juzuavk0/dress/c/c/j/l-il-d-31-illi-london-original-imaffy6g4fybwznb.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k45x0nk0/dress/c/v/m/free-amira-dress-gofan-original-imafjbufzzggdyjq.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/ke1pnrk0/dress/s/h/t/xs-gbk1214-god-bless-original-imafusujapbshjra.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k6wiefk0/dress/r/g/q/l-zf090-ziya-fashion-original-imafp8yahwfgmxhm.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k3orqfk0/dress/6/g/d/xl-dr-18-zakar-style-original-imafem2cupdez6qw.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k6wiefk0/dress/r/g/q/l-zf090-ziya-fashion-original-imafp8yahwfgmxhm.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k3ahbww0/dress/c/g/4/l-gn2013-l-dev-fashion-original-imafgnnhm4zkqwcz.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k6wiefk0/dress/8/h/q/s-zf092-ziya-fashion-original-imafp8re7eabuudm.jpeg?q=50",
+			"price" : 2402,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk..... ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk..... ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk..... ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk..... ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk..... "
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/kc0u7bk0/dress/8/y/j/l-3655drkstrapdrs-stylestone-original-imaft8zszmfwgfp2.jpeg?q=50",
+			"price" : 2401,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k687wy80/dress/w/d/r/m-848-bhojalram-creation-original-imafj33wtg3svb47.jpeg?q=50",
+			"price" : 2403,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+		{
+			"link" : "https://rukminim1.flixcart.com/image/492/590/k6gsk280/dress/z/u/n/s-maxi-3-r2d-original-imafzh3rqyr9dzu8.jpeg?q=50",
+			"price" : 240,
+			"title": "Laptop",
+			"content":"ye wehj kj hkhk khh kh dksh. khfkdh kl hfd sh k ahfkd hs .hfd khsk hdk"
+
+		},
+
+		]
+
+});
+</script>
+</body>
+</html>

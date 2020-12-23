@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+
+
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.big_div_in_report{
+	border:solid black 1px; width: calc(100vw - 450px); text-align: center; margin-top: 60px; height: calc(100vh - 60px)
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="big_div_in_report " style=" float: right;">
+		<div class="hsplit" style="border:solid black 1px; margin:20px;">
+			<div style="border:solid black 1px; margin-right: 80px;  padding: 0px 5px">This month</div>
+			<div class="hsplit" style="border:solid black 1px; margin-right: 80px;">
+				<div style="border:solid black 1px;  padding: 0px 5px">between</div>
+				<div style="border:solid red 1px; padding: 0px 5px">date</div>
+			</div>
+			<div style="border:solid black 1px; margin-right: 200px;  padding: 0px 5px">ALL</div>
+			<div style="border:solid black 1px; margin-right: 40px;  padding: 0px 5px">Graph</div>
+			<div style="border:solid black 1px; margin-right: 40px;  padding: 0px 5px">Excle</div>
+			<div style="border:solid black 1px; margin-right: 0px;  padding: 0px 5px">Print</div>
+		</div>
+		<div class="hsplit" style="border:solid black 1px; margin:20px; padding:5px;">
+			<div style="border:solid black 1px; width: 21%; height: 100px; ">qqqqqqqqq</div>
+			<div style="border:solid black 1px;  height: 100px; padding-top: 30px; margin: 2px 8px; ">+</div>
+			<div style="border:solid black 1px; width: 21%; height:100px; ">qqqqqqqqq</div>
+			<div style="border:solid black 1px;  height: 100px; padding-top: 30px; margin: 2px 8px; ">+</div>
+			<div style="border:solid black 1px; width:21%; height: 100px; margin: 2px 8px; ">qqqqqq</div>
+			<div style="border:solid black 1px;  height: 100px; padding-top: 30px; margin: 2px 8px; ">=</div>
+			<div style="border:solid black 1px; width: 21%; height: 100px; ">qqqqqqqqq</div>
+
+		</div>
+		<div style="border:solid black 1px;"> 3</div>
+		<div style="border:solid black 1px;"> 4</div>
+		<div style="border:solid black 1px;"> 5</div>
+	</div>
+
+<script>
+var app = angular.module('myApp', ['ngAnimate']);
+app.controller('myCtrl', function($scope) {
+});
+</script>
+</body>
+</html> 	

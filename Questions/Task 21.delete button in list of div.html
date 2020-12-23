@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+	div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.space{
+	margin: 0px 3px;
+
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>Name: <input type="text" ng-model="name_party"></p>
+	<p>Age:  <input type="text" ng-model="age_party"></p>
+
+	<button ng-click="button()"> Save</button>
+	<button ng-click="delete()"> Delete</button>
+
+	<span style="border: solid black 1px; margin:5px; padding:1px 20px;">{{m}}/{{list.length}}</span>
+	<br>
+	<br>
+
+	<div class="hsplit" ng-repeat="x in list" style="border: solid green 1px; width:300px;  ">
+		<div><input type="checkbox" ng-model="x.check" ng-change="function_checkbox()"></div>
+		<div style="">
+			<div class="space">{{x.name}} {{x.age}} {{x.id}}</div>
+		</div>
+		<div  style=" float: right; padding-top:4px;">
+			<span class="material-icons"  style="cursor: pointer"   ng-click="clear(x.id)">
+				clear
+			</span>
+		</div>
+	</div>
+
+	
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.name_party=" sonu"
+	$scope.age_party="111"
+	$scope.list=[];
+	$scope.index=0;
+	
+
+	$scope.button=function(){
+		if($scope.name_party=="rohit" || $scope.age_party==" 23"){
+			alert("Input is empty.")
+		}
+		else{
+			$scope.list.push({name:$scope.name_party, age:$scope.age_party, id:$scope.index , check : false})
+			$scope.index += 1;
+		
+		} 	
+	}
+	$scope.delete=function() {
+		$scope.list=[]
+		function_checkbox()
+	}
+
+
+	console.log($scope.list)
+
+
+	$scope.clear=function(id){
+		var list_clear=[]
+		for ( i in $scope.list){
+			if($scope.list[i].id!=id){
+				list_clear.push($scope.list[i])
+			}
+		}
+		$scope.list=list_clear
+		$scope.function_checkbox()
+	}
+
+
+
+	$scope.m=""
+	$scope.function_checkbox=function(){
+		var list_checkbox=[]
+		var j=0
+		for( i in $scope.list){
+			if($scope.list[i].check==true){
+				j+=1
+			}
+		}
+		$scope.m=j
+
+		console.log($scope.m)
+		
+	}
+});
+</script>
+</body>
+</html>

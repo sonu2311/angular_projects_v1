@@ -1,0 +1,245 @@
+<DOCTYPE!>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}		
+
+div.hsplit:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.top{
+	color: rgb(85,85,85);
+	cursor: pointer;
+	font-size: 40px;
+	width: 850px;
+}
+.top:hover{
+	color:rgb(76, 175, 80);
+}
+.top2{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:15px;
+	letter-spacing:4px;
+	padding-top: 20px;
+}
+.div2{
+	color:#ccc;
+	background-color: rgb(85,85,85);
+	font-size:17px;
+	font-family: Arial, Helvetica, sans-serif;
+	cursor: pointer;
+}
+.div2part{
+	padding:15px;
+}
+.div2part:hover{
+	background-color: black;
+}
+
+.div2part_icon {
+	font-size: 20px;
+}
+
+.div3a{
+	font-size:22px;
+	cursor: pointer;
+	background-color: #f1f1f1;
+}
+.div3b{
+	width:100%;
+
+
+}
+.div3c{
+	width: 200px;
+	float:right;
+}
+.box{
+	font-size: 15px;
+	padding:5px 10px;
+}
+.box:hover{
+	background-color: #ccc;
+}
+.mid{
+	padding:30px;
+	
+}
+.button{
+	padding: 10px 20px;
+	color:white;
+	background-color:rgb(76, 175, 80); 
+	border: solid #ccc 1px;
+	cursor: pointer;
+}
+.p{
+	font-size: 14px;
+
+}
+.decoration{
+	text-decoration-line:underline;
+	padding: 0px 10px;
+}
+.decoration:hover{
+	color:rgb(76, 175, 80)
+}
+.bottom{
+	background-color: #f1f1f1;
+	padding:7px 45px;
+	margin:8px;
+	cursor: pointer;
+}	
+.bottom:hover{
+	background-color: #ccc;
+}
+.last{
+	cursor: pointer;
+}
+.last:hover{
+	color:rgb(76, 175, 80);
+	text-decoration-line:underline;
+}
+.how{
+	background-color: #616161;
+	padding:10px;
+	color:white;
+	font-size: 22px;
+	margin:10px;
+}
+.how:hover{
+	text-decoration-line:underline;
+}
+.side{
+	text-align: center;
+	padding:10px;
+	background-color:#f1f1f1;
+	line-height: 3px; 
+	font-size: 15px;
+}
+.img{
+	height: 50px; width: 50px;	
+}
+
+
+
+</style>
+	<body ng-app="">
+		<div style="position: fixed; background-color: white" >
+			<div class="hsplit" style="border:solid #ccc 1px;">
+				<div class="top">W3Schools<span style="color:rgb(76, 175, 80)">.com</span></div>
+				<div class="top2" style="float: right;" >THE WORLD'S LARGEST WEB DEVELOPER SITE</div>
+			</div>
+			<div class="div2 hsplit">
+				<div class="div2part" ng-click="x='HOME'" >HOME</div>
+				<div class="div2part"  ng-click="x='CSS'">CSS</div>
+				<div class="div2part" ng-click="x='JAVASCRIPT'">JAVASCRIPT</div>
+				<div class="div2part" ng-click="x='PYTHONE'" >PYTHONE</div>
+
+	 			<div class="div2part" ng-click="x='PHP'" >PHP</div>
+				<div class="div2part" ng-click="x='SQL'"  >SQL</div>
+				
+			</div>
+		</div>
+			
+		<div class="div3a" 
+				ng-if="x=='HOME'" ><br><br><br><br>
+			<div class="box">CSS HOME</div>
+			<div class="box">CSS Introduction</div>
+			<div class="box">CSS Syntax</div>
+			<div class="box"> CSS Selectors</div>
+			<div class="box"> CSS How To</div>
+			<div class="box"> CSS Comments</div>
+			<div class="box">CSS Colors</div>
+			<div class="box">CSS Background</div>
+			<div class="box">CSS Border</div>
+			<div class="box"> CSS Margins</div>
+			<div class="box">CSS padding</div>
+			<div class="box"> CSS Height/Width</div>
+			<div class="box">CSS Box Model</div>
+			
+		</div>
+
+		<div class="hsplit" ng-if="x=='CSS'"><br><br><br><br>
+			<div class="div3b">
+				<div class="mid"><span style="font-size:30px">CSS Tutorial</span></div>
+				<div class="mid">
+					<button class="button">Home</button>
+					<button class="button" style="float: right;">Next</button>
+				</div>
+				<div class="mid" style="background-color: rgb(212,237,218);">
+					<p>CSS is a language that describes the style of an HTML document.<br><br>CSS describes how HTML elements should be displayed.<br><br>
+
+					This tutorial will teach you CSS from basic to advanced.</p>
+				</div>
+			</div>
+		</div>
+			
+		<div style="padding:5px 25px; margin:20px 50px; font-size: 20px; text-align: center; line-height: 40px;" ng-if="x=='JAVASCRIPT'"><br><br><br>
+			<div style="font-size: 30px; margin-bottom:10px;">Top Tutorials</div>
+			<div class="last">HTML Tutorial</div>
+			<div class="last">JavaScript Tutorial</div>
+			<div class="last">How To Tutorial</div>
+			<div class="last">SQL Tutorial</div>
+			<div class="last">Python Tutorial</div>
+			<div class="last">W3.CSS Tutorial</div>
+			<div class="last">Bootstrap Tutorial</div>
+			<div class="last">PHP Tutorial</div>
+			<div class="last">jQuery Tutorial</div>
+			<div class="last">Java Tutorial</div>
+		</div>
+	
+			
+		<div style="padding:10px;" ng-if="x=='PYTHONE'">
+				<p><b>Click on 		the "Try it Yourself" button to see how 	it works.</b></p>
+				<p class="decoration">Start learning CSS now!</p><hr>
+				<p style="font-size: 25px;">CSS Examples</p>
+				<p>Learn from over 300 examples! With our editor, you can edit the CSS, and click on a button to view the result.</p>
+				<p class="decoration">Go to CSS Examples!</p><hr>
+				<p style="font-size: 25px;">CSS Templates</p>
+				<p>We have created some responsive W3.CSS templates for you to use.<br><br>
+
+				You are free to modify, save, share, and use them in all your projects.</p>
+
+				<p class="decoration">Free CSS Templates!</p>
+
+		</div><hr>
+		
+		<div style="padding: 0px 10px;" class="hsplit" ng-if="x=='PHP'">
+			<img src="https://www.w3schools.com/images/w3certified_logo_250.png"><br><br>
+			<div >
+				<p style="font-size: 30px; padding:0px 10px;">W3Schools' Online Certification</p>
+				<p>The perfect solution for professionals who need to balance work,<br> family, andcareer building.<br><br>More than 25 000 certificates already issued!</p><hr>
+				<p style="font-size: 30px; padding:0px 10px;">W3Schools' Online Certification</p>
+				<p>The perfect solution for professionals who need to balance work,<br> family, andcareer building.<br><br>More than 25 000 certificates already issued!</p>	
+			</div>
+		</div>
+			
+		<div ng-if="x=='SQL'"><br><br><br><br>
+			<p style="font-size: 25px; padding:0px 10px;">CSS References</p>
+			<p style="padding: 0px 10px;">At W3Schools you will find complete CSS references of all properties and selectors with syntax, examples,<br><br> browser support,and more.</p>
+			<p class="decoration" style="padding: 0px 10px;">CSS Properties Reference</p>
+			<p class="decoration">CSS Selectors Reference</p>
+			<p class="decoration">CSS Functions Reference</p>
+			<p class="decoration">CSS Animatable Reference</p>
+			<p class="decoration">CSS Aural Reference</p>
+			<p class="decoration">CSS Units</p>
+			<p class="decoration">CSS Color Reference</p>
+			<p class="decoration">CSS Default Values</p>	<hr>
+			<p style="font-size: 25px; padding:0px 10px;">CSS Exam - Get Your Diploma!</p>
+		</div>	
+	</body>
+</head>
+</html>

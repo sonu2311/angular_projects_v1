@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div>
+	AAA
+	<div ng-include="'help.html'" ></div>
+	BBB 
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.list = [11, 22, 33, 44]
+});
+</script>
+</body>
+</html>

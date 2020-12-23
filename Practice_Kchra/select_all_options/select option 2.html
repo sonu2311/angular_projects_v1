@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+div.fix:{
+	margin:15px;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl" >
+	<div style="border:solid black 1px; padding:10px;"  >
+		<div> <input type="checkbox" ng-model="E" ng-change="f()"> Select All</div>
+		<div> <input type="checkbox" ng-model="a" >Red</div>
+		<div><input type="checkbox" ng-model="b" >White</div>
+		<div><input type="checkbox" ng-model="c" >Yellow</div>
+		<div><input type="checkbox" ng-model="d" >Orange</div>	
+	</div>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		
+		$scope.f = function() {
+			
+			$scope.a=$scope.E 
+			$scope.b=$scope.E
+			$scope.c=$scope.E
+			$scope.d=$scope.E
+		 }
+	});
+</script>
+</body>

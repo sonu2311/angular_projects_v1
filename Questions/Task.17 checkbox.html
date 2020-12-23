@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>Name: <input type="text" ng-model="name_party"></p>
+	<p>Age:  <input type="text" ng-model="age_party"></p>
+
+	<button ng-click="button()"> Save</button>
+	<button ng-click="delete()"> Delete</button>
+	<button ng-click="print()"> Print</button>
+
+	<br>
+	<br>
+	
+	<div ng-repeat="x in list" style="border: solid green 1px; height:50px; ">
+		<div >
+			<input type="text" ng-model='x.z'>
+			Name = {{x.name}}, age = {{x.age}}
+		</div>
+	</div>
+
+	
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	s = $scope
+	$scope.name_party=""
+	$scope.age_party=""
+	$scope.list=[];
+	var blocked_list = ["A", "B", "Mukesh"];
+
+	var f = function(l, x) {
+	    for(i in l) {
+	        if (l[i]==x) {
+	            return true
+	        }
+	    }
+	    return false
+	}
+
+
+	$scope.button=function() {
+		if($scope.name_party=="" || $scope.age_party==""){
+			alert("Input is empty.")
+		}
+		else{
+			$scope.list.push({
+				name:$scope.name_party,
+				age:$scope.age_party,
+				z: 'p'})
+			$scope.name_party=""
+			$scope.age_party=""
+			console.log($scope.list)
+		}
+	}
+	$scope.print = function() {
+		console.log($scope.list)
+	}
+
+	$scope.delete=function(){
+		$scope.list=[]
+	}
+});
+</script>
+</body>
+</html>

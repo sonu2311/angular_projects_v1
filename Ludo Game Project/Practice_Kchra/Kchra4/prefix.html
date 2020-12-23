@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+	div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.space{
+	margin: 0px 3px;
+
+}
+.display{
+	border:solid black 1px;
+	height:20px;
+	width:300px;
+	margin:10px 0px;
+	padding-left:10px;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>String: <input type="text" ng-model="string"></p>
+	<p>Substring:  <input type="text" ng-model="sbstring"></p>
+
+	<button ng-click="match()">Match</button>
+	<div class="display">{{result}}</div>
+
+	
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.string="mohit"
+	$scope.sbstring="moh"
+	$scope.result = "No result";
+
+	$scope.match=function() {
+		$scope.result = $scope.prefix($scope.string, $scope.sbstring)
+	}
+
+
+	$scope.prefix=function(x,y){
+    	if (y.length>x.length){
+    		return false   		
+    	}
+	    var i=0;
+	    while (i<y.length){
+	    	if (x[i]!=y[i]){
+	            return false
+	    	}
+	        i+=1
+	    }     
+	    return true
+	}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+	div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.space{
+	margin: 0px 3px;
+
+}
+.border{
+	width:185px;
+}
+.box_h{
+	border:solid black 1px; 
+	padding: 10px;
+	width:39px;
+	height:18px;
+	position: relative;
+}
+.box{
+	border:solid black 1px; 
+	padding: 10px;
+	width:28px;
+	height:27px;
+	position: relative;
+}
+.emoji{
+	border:solid black 1px;
+	height:115px; width:147px;
+	text-align: center
+}
+.color_red{
+	background-color:red; 
+}
+.color_blue{
+	background-color:blue; 
+}
+.color_yellow{
+	background-color:yellow; 
+}
+.color_green{
+	background-color:green; 
+}
+.star{
+	font-size: 30px
+
+}
+.star_color_yellow{
+	color:yellow;
+}
+
+.star_color_red{
+	color:red;
+}
+.star_color_green{
+	color:green;
+}
+.star_color_blue{
+	color:blue;
+}
+
+.goti_style {
+  text-shadow: 0 0 3px #000, 0 0 3px #000;
+  position: relative;.
+  
+}
+
+.goti_style:hover {
+	z-index: 4;
+}
+.icon {
+	cursor: pointer;
+	height: 5px;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit">
+		<div style=" width:800px;">
+			<div style="border:solid black 1px; width:780px">
+				<div class="hsplit" style=" width:800px;">
+					<div class="border" style="  ;width:300px; height:230px">
+						<div style=""class="hsplit">
+							<div  ng-repeat=" x in list1" class="  emoji color_green">
+								<span class="material-icons" style="font-size: 70px;">
+								sentiment_very_satisfied
+								</span>
+							</div>
+							
+						</div>
+					</div>
+				<!-- ==== -->
+					<div class="border hsplit">
+						<div>
+							<div ng-repeat="a in list_yellow1" class="box_h" ng-style='{"background-color": a.bgcolor}'>
+								<div style="position: absolute;" >{{a.position}}</div>
+								<div class="icon" ng-repeat="m in goties" ng-if="a.position==m.position" ng-style="{'color': m.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div ng-repeat="b in list_yellow2" class="box_h color_yellow">
+								<div style="position: absolute;" >{{b}}</div>
+								<div class="icon" ng-repeat="p in goties" ng-if="b==p.position" ng-style="{'color': p.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div ng-repeat="c in list_yellow3" class="box_h">
+								<div style="position: absolute;" >{{c}}</div>
+								<div class="icon" ng-repeat="q in goties" ng-if="c==q.position" ng-style="{'color': q.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="border" style=" width:300px;">
+						<div style="" class="hsplit">
+							<div ng-repeat="n in list2" class="emoji color_yellow">
+								<span class="material-icons" style="font-size: 70px;">
+								sentiment_very_satisfied
+								</span>
+							</div>	
+						</div>
+					</div>
+				</div>
+			<!-- ----complete
+ -->
+	<!-- ------2222 -->
+			 <div class="hsplit" style=" width:800px;">
+				<div style="width:300px; ">
+					<div  class="hsplit">
+						<div ng-repeat="d in list_green1" class="box" >
+							<div style="position: absolute;" >{{d}}</div>
+								<div class="icon" ng-repeat="r in goties" ng-if="d==r.position" ng-style="{'color': r.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+						</div>
+					</div>
+					<div  class="hsplit" style="width:300px; ">
+						<div ng-repeat="e in list_green2" class="box color_green" > 
+							<div style="position: absolute;" >{{e}}</div>
+								<div class="icon" ng-repeat="s in goties" ng-if="e==s.position" ng-style="{'color': s.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+						 </div>	
+					</div>
+					<div  class="hsplit" style="width:300px;">
+						<div ng-repeat="f in list_green3"style="" class="box">
+							<div style="position: absolute;" >{{f}}</div>
+								<div class="icon" ng-repeat="t in goties" ng-if="f==t.position" ng-style="{'color': t.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+						 </div>
+					</div>
+				</div>
+				<div style="width:184px; height:150px; ">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSANPoiTLnPrTVhHbxX2fs2LNaj87le7xosdQ&usqp=CAU" style="width:200px; height:150px">
+
+				</div>
+				<div class="hsplit" style="width:300px;">
+					<div style="width:300px; ">
+						<div  class="hsplit">
+							<div ng-repeat="g in list_blue1" class="box" >
+								<div style="position: absolute;" >{{g}}</div>
+								<div class="icon" ng-repeat="u in goties" ng-if="g==u.position" ng-style="{'color': u.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+						<div  class="hsplit" style="width:300px;">
+							<div ng-repeat="h in list_blue2" class="box color_blue"> 
+							<div style="position: absolute;" >{{h}}</div>
+								<div class="icon" ng-repeat="v in goties" ng-if="h==v.position" ng-style="{'color': v.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div> 
+							</div>
+						</div>
+						<div  class="hsplit" style="width:300px;">
+							<div ng-repeat="i in list_blue3" class="box">
+								<div style="position: absolute;" >{{i}}</div>
+								<div class="icon" ng-repeat="pp in goties" ng-if="i==pp.position" ng-style="{'color': pp.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			
+	<!-- ------333 -->
+			 	<div  class="hsplit" style=" width:800px;">
+					<div class="border" style=" width:300px; height:230px">
+						<div style="" class="hsplit">
+							<div  ng-repeat="z in list3" class="emoji color_red">
+								<span class="material-icons" style="font-size: 70px;">
+								sentiment_very_satisfied
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="border hsplit">
+						<div >
+							<div  ng-repeat="j in list_red1" class="box_h" >
+								<div style="position: absolute;" >{{j}}</div>
+								<div class="icon" ng-repeat="qq in goties" ng-if="j==qq.position" ng-style="{'color': qq.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div ng-repeat=" k in list_red2" class="box_h color_red" >
+								<div style="position: absolute;" >{{k}}</div>
+								<div class="icon" ng-repeat="rr in goties" ng-if="k==rr.position" ng-style="{'color': rr.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div  ng-repeat=" l in list_red3" class="box_h" >
+								<div style="position: absolute;" >{{l}}</div>
+								<div class="icon" ng-repeat="ss in goties" ng-if="l==ss.position" ng-style="{'color': ss.color} " ng-click="apply($index)">
+									<span class="material-icons goti_style" >
+										stop_circle
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="border" style="width:300px;">
+						<div style="" class="hsplit">
+							<div ng-repeat="w in list4" class="emoji color_blue">
+								<span class="material-icons" style="font-size: 70px;">
+								sentiment_very_satisfied
+								</span>
+							</div>
+						</div>
+					</div>	
+				</div>	
+		</div>
+	</div>
+</div>
+	  <div  class="hsplit" style=" padding:10px;">
+	  		<div style=" margin:10px 40px;">
+	  			<span class="material-icons star_color_red" style="font-size: 100px;">
+				person
+				</span>
+	  		</div>
+	  		<div style=" margin:20px; height:100px; width:80px">
+	  			<div>
+	  				<span class="material-icons" style="font-size: 80px; text-align: center;">
+					casino
+					</span>
+	  			</div>
+	  			<div style="border:solid black 2px; padding:8px 0px; border-radius: 3px; text-align: center;">number</div>
+	  		</div>
+	  		<div style=" margin:10px 40px;">
+	  			<span class="material-icons star_color_green" style="font-size: 100px; ">
+				person
+				</span>
+	  		</div>
+	  		<p><input type="number"	ng-model="y"></p>
+	  </div>
+	</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	s = $scope
+
+	$scope.y = 1
+
+	var double_range=function(x, y, inc, ppp) {
+		var l = []
+	   	var i = x
+	    while(i != y) {
+	    	l.push({position: i, "bgcolor": ppp})
+	    	i += inc
+	    }
+	    return l
+	}
+
+	var join_list=function(l1,l2){
+		for (i in l2){
+		 	l1.push(l2[i])
+	    return l1	
+		}
+	}
+        
+
+	$scope.list1=[0,1,2,3]
+	$scope.list2=[4,5,6,7]
+	$scope.list3=[8,9,10,11]
+	$scope.list4=[12,13,14,15]
+
+	$scope.list_yellow1 = double_range(21, 15, -1, "white")
+	$scope.list_yellow2=[22,92,93,94,95,96]
+	$scope.list_yellow3=[23,24,25,26,27,28]
+
+	$scope.list_green1=[62,63,64,65,66,67]
+	$scope.list_green2=[61,102,103,104,105,106]
+	$scope.list_green3=[60,59,58,57,56,55]
+
+	$scope.list_blue1=[29,30,31,32,33,34]
+	$scope.list_blue2=[97,98,99,100,101,35]
+	$scope.list_blue3=[41,40,39,38,37,36]
+	
+	$scope.list_red1=[54,53,52,51,50,49]
+	$scope.list_red2=[76,77,78,79,80,48]
+	$scope.list_red3=[42,43,44,45,46,47]
+
+	$scope.goties=[
+					// {position: 21, "color": "green"},
+					// {position: 20, "color": "green"},
+					// {position: 19, "color": "yellow"},
+					// {position: 16, "color": "blue"},
+					// {position: 17, "color": "green"},
+					// {position: 17, "color": "green"},
+					// {position: 18, "color": "green"},
+					// {position: 67, "color": "green"},
+					{position: 16, "color":"blue"},
+					// {position: 22, "color":"blue"},
+					// {position: 2, "color":"blue"},
+					// {position: 2, "color":"blue"},
+					// {position: 18, "color":"yellow"},
+					// {position: 18, "color":"yellow"},
+					// {position: 71, "color":"yellow"},
+					// {position: 81, "color":"yellow"},
+					]
+
+   
+
+
+
+	var total_len = 6 * 3 * 4 + 4*4
+
+
+	$scope.apply=function(p) {
+		console.log("Changed goti index = " + p)
+		console.log("Old position = " + $scope.goties[p].position)
+		console.log("Dice value = " + $scope.y)
+		console.log(total_len)
+		$scope.goties[p].position=($scope.goties[p].position + parseInt($scope.y))%total_len
+		console.log("New position = " + $scope.goties[p].position)
+	}
+
+});
+
+</script>
+</body>
+</html>

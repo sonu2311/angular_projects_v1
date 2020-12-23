@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <p>Name: <input type="text" ng-model="y"></p>
+   <p>Age: <input type="text" ng-model="z"></p>
+ 
+  <button  ng-click="f()">Add</button><br><br>
+
+  <div ng-repeat="x in list" style="border:solid green 1px;height: 50px;"> 
+  	<div> {{x.name}}</div>
+  	<div>{{x.age}}</div>
+  </div>
+<script>
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.y="";
+  	$scope.z="";
+
+  	$scope.list=[]
+	$scope.f=function(){
+		$scope.list.push( {name:$scope.y, age:$scope.z})
+		store($scope.list)
+	}
+
+});
+</script>
+</body>
+</html>

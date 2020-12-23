@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <p>Name: <input type="text" ng-model="y"></p>
+   
+ 
+  <button  ng-click="f()">Add</button><br><br>
+
+  <div ng-repeat="x in list">{{x}}</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.y="";
+  
+	$scope.list=["AA", "BB","CC"]
+  
+	$scope.f=function() {
+	   	if($scope.y==""){
+	   		alert("yha input empty h to input me text daaliye")
+	   	}
+	   	else{
+	   		$scope.list.push($scope.y)
+		   	$scope.y=""
+	   	}
+	}
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.lift{
+	width:300px;
+	border: solid black 1px;
+	text-align: center;
+	transition: 1s
+}
+.lift_border{
+	border: solid black 1px;
+	height: 600px;
+	text-align: center;
+}
+.button{
+	padding:10px;
+	margin-left: 10px;
+	margin-top: 18px;
+
+}
+</style>
+
+<body  ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit">
+		<div class="lift_border">
+			<div class="lift" ng-style='{"margin-top":x+"px"}'>
+				<div style="border: solid red 1px;width: 100px;margin-left: 20px">
+					<span class="material-icons" style="font-size: 50px" >
+					accessibility
+					</span>
+				</div>
+			</div>
+
+		</div>
+		
+		<div >
+			<div class="button"><button style="font-size: 50px; cursor: pointer;" ng-click="f(5)">5</button></div>
+			<div class="button"><button style="font-size: 50px; cursor: pointer;" ng-click="f(4)">4</button></div>
+			<div class="button"><button style="font-size: 50px; cursor: pointer;" ng-click="f(3)">3</button></div>
+			<div class="button"><button style="font-size: 50px; cursor: pointer;" ng-click="f(2)">2</button></div>
+			<div class="button"><button style="font-size: 50px; cursor: pointer;" ng-click="f(1)">1</button></div>
+			<div class="button"><button style="font-size: 50px; cursor: pointer;" ng-click="f(0)">0</button></div>
+			
+		</div>
+	</div>
+
+<script>
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.x=0;
+	$scope.f=function(y){
+		$scope.x= 500-y*100
+	}
+	
+});
+</script>
+</body>
+</html>

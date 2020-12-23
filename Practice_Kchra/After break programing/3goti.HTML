@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.box{
+	border:solid black 1px;
+	width:520px;
+}
+.box1{
+	border:solid black 1px;
+	padding:10px;
+	height:30px;
+	width:30px;
+	text-align: center;
+	position: relative;
+}
+.icon{
+	position: absolute;
+	cursor: pointer;
+}	
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div  class="hsplit box">
+		<div class="box1" ng-repeat="x in list">
+			<span class="material-icons icon"  ng-repeat="z in goties" ng-if="x==goties[$index].position" ng-click="apply($index)">
+			support
+			</span>
+			<!-- <span class="material-icons icon" ng-if="goti1 == x" ng-click="apply1()">
+			support
+			</span> -->
+		</div>
+
+	</div>
+	<div>
+		<input type="number" style="margin-top: 20px;" ng-model="y" >
+	</div>
+<script>
+var app = angular.module('myApp', [])
+app.controller('myCtrl', function($scope) {
+	$scope.list=[]
+	$scope.y=0
+	// $scope.goties=[{position: 0}, {position: 0}, {position: 0}]
+	$scope.goties=[]
+	var num_goti = 3
+	var i = 0
+	while(i < num_goti) {
+		$scope.goties.push({position: 0})
+		i++
+	}
+	
+	function range(x) {
+		var i=0;
+    	var l=[]
+    	while (i<x) {
+    		l.push(i)
+       		i+=1	
+    	}
+	    return l
+	}
+	$scope.list=range(10)
+
+	console.log($scope.list)
+
+	$scope.apply=function(p) {
+		$scope.goties[p].position=($scope.goties[p].position + parseInt($scope.y))%$scope.list.length
+	}
+
+	// $scope.apply1=function(){
+	// 	$scope.goti1=($scope.goti1+ parseInt($scope.y))%$scope.list.length
+	// }
+
+});
+</script>
+</body>
+</html>

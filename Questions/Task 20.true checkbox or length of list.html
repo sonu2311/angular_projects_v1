@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>Name: <input type="text" ng-model="name_party"></p>
+	<p>Age:  <input type="text" ng-model="age_party"></p>
+
+	<button ng-click="button()"> Save</button>
+	<button ng-click="delete()"> Delete</button>
+
+	<div style="border:solid black 1px; margin:10px 2px; width: 100px;">{{k}} /{{list.length}} </div>  
+
+	<p><input type="checkbox" ng-model="select" ng-change="All()"> Select All</p>
+	<br>
+	<br>
+	
+	<div ng-repeat="x in list" style="border: solid green 1px; height:50px; ">
+		<div >
+			<input type="checkbox" ng-model='x.z' ng-change="true_checkbox()">
+			Name = {{x.name}}, age = {{x.age}}
+		</div>
+	</div>
+
+	
+<script>
+function store(d) {
+	localStorage["data6"] = JSON.stringify(d || {})
+}
+
+function load(default_data) {
+	return (("data6" in localStorage) ? JSON.parse(localStorage["data6"]) : default_data)
+}
+
+function clear() {
+	localStorage.removeItem("data6")
+}
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.name_party=""
+	$scope.age_party=""
+	$scope.list=[];
+	$scope.select=false;
+
+	$scope.button=function(){
+		if($scope.name_party=="" || $scope.age_party==""){
+			alert("Input is empty.")
+		}
+		else{
+			$scope.list.push({name:$scope.name_party, age:$scope.age_party ,z:false})
+			$scope.true_checkbox()
+			$scope.name_party=""
+			$scope.age_party=""
+
+		} 	
+	}
+
+	$scope.delete=function(){
+		var list_delete=[];
+		for(i in $scope.list){
+			if(!$scope.list[i].z){
+				list_delete.push($scope.list[i])
+			}
+		}
+		$scope.list= list_delete
+		$scope.true_checkbox() 
+	}
+
+	$scope.All=function(){
+		for (i in $scope.list) {
+			$scope.list[i].z = $scope.select
+		}
+		$scope.true_checkbox()
+	}
+
+
+	$scope.k=0;
+	$scope.true_checkbox=function(){
+		$scope.k=0;
+		for (i in $scope.list){
+			if($scope.list[i].z==true){
+				$scope.k+=1;
+			}
+		}
+
+	}
+
+});
+</script>
+</body>
+</html>

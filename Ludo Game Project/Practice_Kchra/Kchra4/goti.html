@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.box{
+	border:solid black 1px;
+	width:520px;
+}
+.box1{
+	border:solid black 1px;
+	padding:10px;
+	height:30px;
+	width:30px;
+	text-align: center;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div  class="hsplit box">
+		<div class="box1" ng-repeat="x in list">
+			<span class="material-icons" ng-if="x == goti" >
+			support
+			</span>
+		</div>
+	</div>
+
+
+		<input type="number" style="margin-top: 20px;" ng-model="y" >
+		<button ng-click="apply()" >Apply</button>
+	</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.list=[]
+	$scope.y=0
+	$scope.goti=0
+
+	function range(x) {
+		var i=0;
+    	var l=[]
+    	while (i<x) {
+    		l.push(i)
+       		i+=1	
+    	}
+	    return l
+	}
+	$scope.list=range(10)
+
+	console.log($scope.list)
+
+	$scope.apply=function(){
+		$scope.goti=($scope.goti+ parseInt($scope.y))%$scope.list.length
+	}
+
+});
+</script>
+</body>
+</html>

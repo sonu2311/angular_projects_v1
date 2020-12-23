@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+</style>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>First input:  <input type="text" style=" margin-left: 15px;" ng-model="x"></p>
+	<p>Second input: <input type="text" ng-model="y"></p>
+	<p><button> Match</button></p>
+	<div style="border:solid black 1px; height:20px; width:300px;"></div>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.x=0
+		$scope.y=1;
+
+		$scope.match_string=function(){
+			
+		}
+	});
+</script>
+</body>
+</html>
+	

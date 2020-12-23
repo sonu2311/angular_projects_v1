@@ -1,0 +1,111 @@
+<DOCTYPE!>
+<html>
+<head>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}		
+
+div.hsplit:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.top{
+	color: rgb(85,85,85);
+	cursor: pointer;
+	font-size: 40px;
+	width: 600px;
+}
+.top:hover{
+	color:rgb(76, 175, 80);
+}
+.top2{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:15px;
+	letter-spacing:4px;
+	padding-top: 20px;
+}
+.div2{
+	color:#ccc;
+	background-color: rgb(85,85,85);
+	font-size:17px;
+	font-family: Arial, Helvetica, sans-serif;
+	cursor: pointer;
+}
+.div2part{
+	padding:15px;
+}
+.div2part:hover{
+	background-color: black;
+}
+
+.div2part_icon {
+	font-size: 20px;
+}
+
+.tmp {
+	background-color: blue;
+	width: 100px;
+	height: 100px;
+}
+
+
+</style>
+	<body>
+		<div style="background-color: white" >
+			<div class="hsplit" style="border:solid #ccc 1px;">
+				<div class="top">W3Schools<span style="color:rgb(76, 175, 80)">.com</span></div>
+				<div class="top2" style="float: right;" >THE WORLD'S LARGEST WEB DEVELOPER SITE</div>
+			</div>
+			<div class="div2 hsplit">
+				<div class="material-icons div2part div2part_icon"  >home</div>
+				<div class="div2part">HOME</div>
+				<div class="div2part" >CSS</div>
+				<div class="div2part">JAVASCRIPT</div>
+				<div class="div2part">EXERECISES</div>
+				<div class="material-icons div2part div2part_icon">
+				trip_origin
+				</div>
+				<div class="material-icons div2part div2part_icon">
+				public
+				</div>
+				<div class="material-icons div2part div2part_icon">
+				search
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="tmp" >PPPP</div>
+			<div>
+				<button class="button" >Make Big</button>
+				<button class="color_change" >Color Change</button>
+			</div>
+		</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(".button").click(function() {
+		$(".tmp").height("200px");
+		$(".tmp").width("200px");
+	});
+
+
+	$(".color_change").click(function() {
+		$(".tmp").css({"background-color": "red"});
+		$(".tmp").css({"color": "pink"});
+		$(".tmp").css({"margin": "30px"});
+	});
+
+
+</script>
+	</body>
+</head>
+</html>

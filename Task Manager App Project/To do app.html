@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+div.hsplit:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+div.task_row:hover {
+	background-color: #e6e6ff;
+}
+
+div.task_row {
+	cursor: pointer;
+	padding-top: 10px;
+}
+
+.color:hover{
+	background-color: #e6e6ff;
+	cursor: pointer;
+}
+.cross:hover{
+	background-color:#9999ff ;
+	cursor: pointer;
+	border-radius: 15px;
+}
+	
+</style>
+<body  ng-app="myApp" ng-controller="myCtrl">
+	<div style="border:solid #ccc 1px; ">
+		<div class="hsplit"  style="background-color: #6666ff; color: white; padding: 5px 0px;" >
+			<div style=" width: 570px; text-align: center; font-size: 20px; "><b>Task Maneger</b></div>
+			<div style=" width: 110px; float:right; padding: 2px; text-align: center;">
+				{{k}}/{{list.length}}
+			</div>
+		</div>
+		<div style=" padding-left: 5px; margin-top: 10px; " ng-repeat="x in list">
+		 	<div class="hsplit task_row" >
+				<div style="">
+					<input   ng-click="h()"  ng-model="x.check" type="checkbox"  >
+				</div>
+				<div style="margin-left: 10px; margin-right: 10px;" >{{x.name}}</div>
+				<div style="float: right;  padding-right: 40px;" ng-click="g(x.id)">
+					<span class="material-icons cross" >
+					clear
+					</span>
+				</div>
+			</div>
+
+		</div>
+		<div class="hsplit" >
+			<div style=" margin:10px 5px;">
+				<input class="color" type="text" placeholder="Add new" ng-model="y">
+			</div>
+			
+				<div  style="" ng-click="f()">
+					<span class="material-icons cross" style="margin-top:10px;">
+						add_circle_outline
+					</span>
+			</div>
+			
+		</div>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+		  $scope.list=[
+		  { name:"sonu",id:1, check:false} ,
+		  { name:"mohit", id:2, check:false},
+		  { name:"pooja" ,id:3, check:false}] 
+		  $scope.counter = 3;
+		  $scope.f=function(){
+		  	$scope.counter += 1;
+		  	$scope.list.push(
+		  		{name:$scope.y, id: $scope.counter, check:false})
+		  }
+		  $scope.g=function(id) {
+		  	var l2=[]
+		    for (i in $scope.list){
+		        if ($scope.list[i]["id"]!=id) {
+		            l2.push($scope.list[i]);
+		        }
+		    }
+		    $scope.list = l2
+		    $scope.h();
+		  }
+		  $scope.h=function(){
+		  	$scope.k=0;
+		  	for (i in $scope.list){
+		  		if($scope.list[i]["check"]==true){
+		  			$scope.k +=1
+		  		}
+		  	}
+		  }
+
+	});
+	</script> 
+</body>
+</head>
+</html

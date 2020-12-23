@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<style>
+.input1{
+	margin-right:10px; padding:5px; 
+  width:200px;
+}
+.input1:hover{
+	border-color:blue;
+  border-radius: 4px;
+}
+.div1{
+	margin-right:400px;
+}
+div.hsplit:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.div2{
+	margin-left:400px;
+}
+.input2{
+	border:none;
+	 outline: none; 
+	 border-bottom: solid #ccc 1px;
+	 margin-left: 15px;
+} 
+.div3{
+	text-align: right;
+
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+ width: 1300px;
+ text-align: center;
+} 
+.input_serial{
+  padding:10px; 
+  width: 97px;
+  border:none;
+  outline: none; 
+  border: solid #ccc 1px;
+  border-radius: 0px
+}
+.input_serial:hover{
+  /*border-radius: 0px;*/
+  border-color:blue;
+}
+</style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div>
+	  <br>
+	  <div class="hsplit" style="margin:15px;">
+  	     <div class= "div1">
+  	     	 <input type="text" placeholder="Customer" class="input1" ng-model="customer_name"><br>
+  	     </div>
+  	     <div class="div2" >
+  	     	Invoice no :
+  	     	 <input class="input2" ng-model="invoice_no">
+  	     </div>
+  	     <br>
+  	     <br>
+  	     <div style="margin-left: 1020px;">
+  	     	Invoice Date :
+  	     	<input class="input2" ng-model="invoice_date">
+  	     </div>
+  	     <br>
+  	     <br>
+  	     <div style="margin-left: 1020px;">
+  	     	Stet of supply :
+  	     	 <select style="width:165px; margin: 9px; " ng-model="state_of_supply">
+  	     		<option ng-repeat="x in list_states">{{x}}</option>
+  	     	 </select>
+  	     </div>
+  	     <br>
+  	     <br>
+  	     <br>
+  	     <div style=" text-align: center;"
+  	          class="hsplit">
+  	          <div  style="border: solid black 1px; width:120px; ">
+  	          	<div style="padding:2px;"> Serial No.</div>
+  	          	<div>
+  	          		<input class="input_serial"  ng-model="serial_no">
+  	          	</div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:130px;  ">
+  	          	<div style="padding:2px;"> ITEM</div>
+  	          	<div>
+  	          		<input style=" padding:10px; width: 110px;" ng-model="item">
+  	          	</div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:120px; ">
+  	          	<div style="padding:2px;"> QTY</div>
+  	          	<div>
+  	          		<input ng-change="multipal()" style=" padding:10px; width: 100px;" ng-model="qty">
+  	          	</div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:120px; ">
+  	          	<div style="padding:2px;"> UNIT</div>
+  	          	<div>
+  	          		<input style=" padding:10px; width: 100px;" ng-model="unit">
+  	          	</div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:120px; ">
+  	          	<div style="padding:2px;">PRICE/UNIT</div>
+  	          	<div>
+  	          		<input ng-change="multipal()" style=" padding:10px; width: 100px;" ng-model="price_unit">
+  	          	</div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:250px; ">
+  	          	 <div> 
+  	          		<div style="padding:2px;">DISCOUNT</div>
+  	          		<div class="hsplit" style="text-align:center;">
+  	          			<div style="border:solid #ccc 1px; ">
+  	          				<div>%</div>
+  	          				<div><input style="width: 120px;" ng-model="discount"></div>
+  	          			</div>
+  	          			<div style="border:solid #ccc 1px;">
+  	          				<div>amount</div>
+  	          				<div><input style="width: 110px;" ng-model="discount_amount" ></div>
+  	          			</div>
+  	          		</div>
+  	          	 </div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:220px; ">
+  	          	 <div> 
+  	          		<div style="padding:2px;">TAX</div>
+  	          		 <div class="hsplit" style="text-align:center;">
+  	          			<div style="border:solid #ccc 1px; ">
+  	          				<div>%</div>
+  	          				<div>
+  	          					<select style="width: 90px;" ng-model="tax">
+  	          						<option ng-repeat="x in tax_list">{{x}}</option>
+  	          				    </select>
+  	          				</div>
+  	          			</div>
+  	          			<div style="border:solid #ccc 1px;">
+  	          				<div>amount</div>
+  	          				<div><input style="width: 100px;" ng-model="tax_amount" ></div>
+  	          			</div>
+  	          		</div>
+  	          	 </div>
+  	          </div>
+  	          <div  style="border: solid black 1px; width:200px;  ">
+  	          	<div style="padding:2px;"> AMOUNT</div>
+  	          	<div>
+  	          		<input disabled="true" style=" padding:11px; margin:0px;" ng-model="total_amount" >
+  	          	</div>
+  	     </div>
+  	</div>
+  	     <br>
+  	     <br>
+  	     <br>
+  	     <br>
+  	     <div style="float: right;">
+  	     	TOTAL :
+  	     	<input class="input1" ng-model="total_amount_again">
+  	     </div>
+  	     <br>
+  	     <br>
+  	     <button style="margin-left: 1200px; padding:9px; width:100px; background-color:#4d94ff ;" id="box" ng-click="f2()">SAVE</button> 
+  	  </div>
+	</div>
+	<hr>
+	<div  style="" id="test" > 
+		<h4 style="text-align: center;"> SALES REPORTS </h4>
+	   <div style="margin:10px;" class="hsplit">
+	   	   <div> 
+  	      	  <div style="padding:2px;"> TRANSECTIONS </div>
+  	      	  <div>
+  	            <input style=" padding:7px; width: 120px;" ng-model="transection">
+  	       	  </div>
+  	       </div>
+  	       <div style="float: right; " >
+  	     	  <button style="padding:9px; width:120px; background-color:#4d94ff ;" > ADD SALE</button>
+  	      </div>
+  	   </div>
+  	   <br>
+  	   <br>
+  	   <div style="margin:10px;">
+  	   	 <table>
+             <thead>
+                <tr>
+                  <th> Serial no.</th>
+                  <th>Invoice no.</th>
+                  <th>Party name</th>
+                  <th>Date</th>
+                  <th>item</th>
+                  <th>price</th>
+                  <th>Quantity</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in list">
+                  <td>{{x.serial}}</td>
+                  <td>{{x.invoice}}</td>
+                  <td>{{x.party}}</td>
+                  <td>{{x.date}}</td>
+                  <td>{{x.item}}</td>
+                  <td>{{x.price}}</td>
+                  <td>{{x.quantity}}</td>
+                  <td>{{x.amount}}</td>
+                </tr>
+              </tbody>
+            </table>
+  	 </div>
+	 </div>
+   <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+
+        	$scope.invoice_no=""
+			$scope.invoice_date=""
+			$scope.customer_name=""
+			$scope.state_of_supply=""
+			$scope.serial_no=""
+			$scope.qty=""
+			$scope.price_unit=""
+			$scope.unit=""
+			$scope.discount=""
+			$scope.tax=""
+			$scope.discount_amount=""
+			$scope.tax_amount=""
+			$scope.total_amount=""
+			$scope.total_amount_again=""
+			$scope.transection=""
+
+		$scope.tax_list=["none","GST@0%","GST@5%","GST@12%","GST@14%","GST@18%","GST@3%"]
+
+		$scope.list=[
+            // {serial:1 ,invoice:1,party:"sonu", date:22, item:"bag", price:30, quantity:5, amount:300},
+          ]
+
+
+        $scope.list_states=["none", "pune","dehli","gova", "bangloru","maharastra","rajsthan","punjab"]
+
+        $scope.multipal=function(){
+        	$scope.total_amount=$scope.qty*$scope.price_unit
+        	console.log($scope.total_amount)
+        }
+        
+
+        $scope.f2 = function() {
+
+            $scope.list.push({serial:$scope.serial_no, invoice:$scope.invoice_no, party:$scope.customer_name, date:$scope.invoice_date, item:$scope.item, price:$scope.price_unit, quantity: $scope.qty, amount: $scope.total_amount })
+          }
+        
+        });
+  </script>
+
+
+</body>
+</html>

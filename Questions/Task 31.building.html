@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+div.fixed {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 300px;
+ 
+}
+
+div.build{
+  border: 1px solid black;
+  
+}
+
+div.build2 {
+  position: fixed;
+  bottom: 60px;
+  left: 30px;
+  width: 300px;
+  border: solid red 1px;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="build2">
+		<div  class="build" ng-repeat="x in list" >
+			<div style="height: 40px;" >Floor-{{list.length - x - 1}}</div>
+		</div>
+	</div>
+
+	<div class="fixed">
+		<button ng-click="f()"> Up</button>
+		<button ng-click="clear()">Down</button>
+	</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.list=[]
+	$scope.f=function() {
+		$scope.list.push($scope.list.length)
+		console.log($scope.list)
+	}
+
+	$scope.clear=function(){
+		$scope.list.pop()
+		console.log($scope.list)
+	}
+});
+</script>
+</body>
+</html>

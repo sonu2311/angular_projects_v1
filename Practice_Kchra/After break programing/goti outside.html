@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.height_width{
+	height:40px;
+	width:40px
+}
+.border{
+	border:solid black 1px;
+}
+.list2{
+	margin:15px; 
+	text-align: center;
+}
+.icon{
+	cursor: pointer;
+}
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div  class="border" style="width:295px;">
+	<div class="hsplit" style="">
+		<div  class="height_width border" ng-repeat="x in list" >
+			<div ng-repeat="z in goties" ng-if="x==z.position" ng-style='{"color":z.color}' ng-click="apply($index)">
+				<span class="material-icons icon">
+				support
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="hsplit">
+
+		<div style="padding:5px; height:240px;">
+			<div class="hsplit" style="padding:10px; margin:30px; width:150px;">
+				<div class="height_width border list2" ng-repeat="x in list3">
+					<div ng-repeat="z in goties" ng-if="x==z.position" ng-style='{"color":z.color}' ng-click="apply($index)">
+						<span class="material-icons icon">
+						support
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="float:right;">
+			<div  ng-repeat="x in list2" class="height_width border">
+				<div ng-repeat="z in goties" ng-if="x==z.position" ng-style='{"color":z.color}' ng-click="apply($index)">
+					<span class="material-icons icon">
+					support
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<p><input type="number" ng-model="y"></p>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.list=[0, 1,2,3,4,5,6]
+	$scope.list2=[7,8,9,10,11,12]
+	$scope.list3=[13,14,15,16]
+	$scope.y = 1
+
+	$scope.goties=[{position:13, "color":"red"},
+					{position:14, "color":"green"},
+					{position:15, "color":"blue"},
+					{position:16, "color":"yellow"},
+				]
+	var total_ten=$scope.list.length+$scope.list2.length+$scope.list3.length
+
+	$scope.apply=function(p){
+		var old_position = $scope.goties[p].position
+		var yy = $scope.y
+		if(old_position == 13 || old_position == 14|| old_position == 15 || old_position == 16 ) {
+			if(yy == 6){
+				$scope.goties[p].position=0
+			}
+			else{
+				alert("That is not corect")
+			}
+		}
+		else {
+			$scope.goties[p].position=(old_position + $scope.y) % total_ten
+		}
+	}
+});
+</script>
+</body>
+</html>

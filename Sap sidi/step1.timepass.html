@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.box{
+	border:solid black 1px;
+	height: 53px; 
+	width:53px; 
+	text-align: center;
+}
+.goti_style {
+  text-shadow: 0 0 3px #000, 0 0 3px #000;
+  position: relative; 
+  font-size: 35px; 
+}
+
+.goti_style:hover {
+	z-index: 4;
+	cursor: pointer;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+	<div style="border:solid black 2px; width:550px; position: relative;">
+		<div style="" >
+			<!-- snak 98 to 50 -->
+			<img style="position: absolute; left: 120px; top: -5px;" width="400" src="https://i.dlpng.com/static/png/372534_preview.png">
+
+			<!--snak  60 TO 8 -->
+			<img style="position: absolute; left: 10px; top: 220px;" width="400" src="https://i.dlpng.com/static/png/372534_preview.png">
+			<!-- snak 27 to 10 -->
+			<img style="position: absolute; right: 0px; bottom:5px;" width="200" src="https://i.dlpng.com/static/png/372534_preview.png">
+		<!-- snak 56 to 3 -->
+			<img style="position: absolute; left: 120px; bottom: 5px; " height="300" src="https://i.imgur.com/cZRg4NI.png">
+			<!-- snak 93 to 69 -->
+			<img style="position: absolute; right: 50px; top:10px; " height="200" src="https://i.imgur.com/FP1oynJ.png">
+			<!-- snak 40 to 17 -->
+			<img style="position: absolute; left: 0px; bottom:  50px; " width="200" src="https://i.imgur.com/nO6zOo8.png">
+ 			<!--snakkk 68 TO 13 -->
+			<img style="position: absolute; right: 120px; bottom: 65px; " height="300" src="https://i.imgur.com/SdjjfKE.png">
+
+		</div>
+		<div>
+			<!-- Sidhi from 61 to 82 -->
+			<img style="position: absolute; left:-75px; top:-5px;" height="300" src="https://i.imgur.com/Jh2GZMW.png">
+			<!-- Sidhi from 20 to 42 -->
+			<img style="position: absolute; left:-75px; top:240px;" height="300" src="https://i.imgur.com/Jh2GZMW.png">
+			<!-- Sidhi from 9 to 31 -->
+			<img style="position: absolute; right: -60px; top:300px;" height="300" src="https://i.imgur.com/Jh2GZMW.png">
+
+			<!-- Sidhi from 55 to 86 -->
+			<img style="position: absolute; right: 162px; top: 70px; " width="170" src="https://i.imgur.com/RwsPPiS.png">
+			<!-- <img style="position: absolute; right: -58px; top: 10px; " width="170" src="https://i.imgur.com/RwsPPiS.png"> -->
+
+<!-- ==== -->
+
+			<!-- Sidhi from 44 to 96 -->
+			<img style="position: absolute; left: 96px; top:10px; " height="300" src="https://i.imgur.com/7C3fBy2.png">
+			<!-- 6 to 54 -->
+			<img style="position: absolute; right: 97px; bottom:10px; " height="300"
+				 src="https://i.imgur.com/7C3fBy2.png">
+
+
+		</div>
+		<div class="hsplit"   style=" width:550px">
+			<div class="box" ng-repeat="y in small_list" ng-style="{'background-color':y.color_box}" >{{y.number}}
+				<div  ng-repeat="x in goties" ng-if="y.number==x.position" ng-click="apply($index)", ng-style="{'color':x.color}">
+					<span class="material-icons goti_style" >
+						stop_circle
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+
+  $scope.y = 1
+  $scope.turn="red"
+	var snak_ladders_number=function(w,h){
+		var i=0;
+		var l=[]
+		var color_list=["#ff3333","#ffff33","#4d79ff","#4dff4d","white"]
+		// ["#ff1a1a","#ffff1a","#3333ff","#00cc00","white"]
+		while (i<h){
+			 var j=1
+		    while (j<=w){
+		    	 if (i%2 == 1){
+		       	   l.push({"number":101-(11+i*10-j), "color_box":color_list[(i+j)% color_list.length]})
+		       } 
+		       else{
+		       	 l.push({"number":101-(j+i*10), "color_box":color_list[(i+j)% color_list.length]})
+		       }   
+		       j+=1
+		    }
+		    i+=1  
+		}    
+	   return l
+	}
+
+	$scope.small_list=snak_ladders_number(10,10)
+
+	console.log(snak_ladders_number(10,10))   
+
+	$scope.goties=[
+						// {position: 21, "color": "green"},
+						// {position: 20, "color": "green"},
+						// {position: 19, "color": "yellow"},
+						// {position: 16, "color": "blue"},
+						// {position: 17, "color": "green"},
+						// {position: 17, "color": "green"},
+						// {position: 18, "color": "green"},
+						// {position: 67, "color": "green"},
+						{position: 1, "color":"#000066"},
+						{position: 22, "color":"#00aaff"}
+						// {position: 2, "color":"blue"},
+						// {position: 2, "color":"blue"},
+						// {position: 18, "color":"yellow"},
+						// {position: 18, "color":"yellow"},
+						// {position: 71, "color":"yellow"},
+						// {position: 81, "color":"yellow"},
+						]
+
+	// $scope.d_players={
+	// 	"red":{
+	// 			"snak_starting":98;
+	// 			"snak_ending":50;
+	// 			"sidi_starting":
+	// 			"sidi_ending":
+	// 	}
+	// } 
+
+	var total_len=101
+
+	$scope.apply=function(p){
+		$scope.goties[p].position=($scope.goties[p].position+$scope.y)%total_len
+	}
+	
+	
+});
+</script>
+</body>
+</html>

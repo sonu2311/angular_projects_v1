@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+	
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+.border{
+	
+	margin:10px;
+	padding:5px;
+	width:230px;
+	height: 360px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+.border:hover {
+	box-shadow: 5px 10px 15px #888888;
+	border: #888888;
+}
+.niche_vala_div {
+	position: relative;
+	background-color: white;
+	transition: all 0.2s;
+	top: 0px;
+}
+
+.border:hover > .niche_vala_div {
+	top: -20px;
+}
+.big_div{
+	text-align: center;
+	padding:5px;
+	margin-bottom: 10px;
+}
+img.product_image {
+	height: 250px;
+	
+}
+</style>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="hsplit" style="padding: 70px 0px; border:solid black 1px; ">
+	<div style="border:solid red 1px; width: 250px;">
+		<div style="  margin:15px; ">
+			<div style="font-weight: 600;"> Color</div>
+			<div style="margin:5px;" ng-repeat="(x, y) in color_filter_list">
+				<input type="checkbox" ng-model='color_filter_list[x]' ng-change='search()' > {{x}}
+			</div>
+		</div>
+		<div style="  margin:15px; ">
+			<div style="font-weight: 600;"> Brand</div>
+			<div style="margin:5px;" ng-repeat="(x, y) in brand_filter_list">
+				<input type="checkbox" ng-model='brand_filter_list[x]' ng-change='search()' > {{x}}
+			</div>
+		</div>
+		<div style="  margin:15px; ">
+			<div style="font-weight: 600;">Dress Type</div>
+			<div style="margin:5px;" ng-repeat="(x, y) in dress_type_filter_list">
+				<input type="checkbox" ng-model='dress_type_filter_list[x]' ng-change='search()' > {{x}}
+			</div>
+		</div>
+		<div style="  margin:15px; ">
+			<div style="font-weight: 600;">Price</div>
+			<div style="margin:5px;" ng-repeat="(x, y) in price_filter_list">
+				<input  style="width:80px" type="number" ng-model='price_filter_list[x]' ng-change='search()' > {{x}}
+			</div>
+		</div>
+	</div>
+
+	<div style="border:solid red 1px; width: calc(100vw - 270px);">
+		<div class="hsplit big_div">
+			<div ng-repeat="x in final_list">
+				<div class="border">
+					<img class="product_image" ng-src="{{x.link}}">
+					<div>{{x.dress_color}}</div>
+					<div>{{x.brand}}</div>
+					<div>{{x.dress_type}}</div>
+					<div>{{x.price}}</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="products.js" ></script>
+<script>
+var app = angular.module('myApp', [])
+	app.controller('myCtrl', function($scope) {
+
+	$scope.color_filter_list = {"red":false,"blue":false, "yellow":false,"green":false,"white":false,"grey":false,"black":false,"pink":false}
+
+	$scope.brand_filter_list = {"max": false,"lifestyle": false,"westren": false,"trands": false,"biba": false,"zara": false}
+	$scope.dress_type_filter_list={"western frok":false,"shirt":false,"maxi":false,"western short dress":false,"jumpsuit":false}
+	$scope.price_filter_list={"min":0,"max":100000}
+	
+
+	// Ye function input me ek filter lega.
+	// Filter kya hai ?
+	// Filter ka ek example hai {"red": true, "black": true}
+	// Filter ka dusra example hai {"max": false, "redmi": true}
+	// Filter ka format isi type ka hoga.
+	// Is type ke input me agr sari key ke corresponding value agr
+	// false hai to output true hoga.. Agr kisi bhi key ki corresponding
+	// value true ho jati hai to is function ka output false ana chahiye.
+	// Example:
+	// Agr input {"red": false, "blue": false} hai to output true hoga
+	// Agr input {"red": false, "pink" true, "blue": false} hai to
+	// output false hoga, q ki iss input me sari values false ni hai
+	// (pink was true hai).	
+	var	is_all_uncheck= function(filter) {
+	  for ( var i in  filter){
+	    if( filter[i]==true){
+	      return false
+	    }
+		}
+	  return true
+	}
+
+	$scope.check_color_function=function(product) {
+		if(is_all_uncheck($scope.color_filter_list)){
+			return true
+		}
+		return $scope.color_filter_list[product.dress_color] 
+	}
+
+	$scope.check_brand_function=function(product) {
+		if(is_all_uncheck($scope.brand_filter_list)){
+			return true
+		}
+		return $scope.brand_filter_list[product.brand] 
+	}
+	$scope.check_dress_type_function=function(product) {
+		if(is_all_uncheck($scope.dress_type_filter_list)){
+			return true
+		}
+		return $scope.dress_type_filter_list[product.dress_type] 
+	}
+	$scope.check_price=function(product){
+		if($scope.price_filter_list.min <= product.price && product.price <= $scope.price_filter_list.max){
+			return true
+		}
+		else{
+			return false
+		}
+	}
+
+	$scope.select_list=function(l){
+		var l1=[]
+		for ( var i in l){
+			if( $scope.check_color_function(l[i]) && $scope.check_brand_function(l[i])&& $scope.check_dress_type_function(l[i]) && $scope.check_price(l[i])){
+				l1.push(l[i])
+			}	
+		}
+		return l1
+	}
+	$scope.search=function(){
+		$scope.final_list= $scope.select_list(all_products_list)
+		console.log($scope.final_list)
+	}
+
+	$scope.final_list= $scope.select_list(all_products_list)
+
+});
+</script>
+</body>
+</html>
+<!-- {
+			"link" : "https://rukminim1.flixcart.com/image/492/590/kesv0y80/dress/d/y/m/l-rd-2001-radius-export-import-original-imafven4vvmrv3px.jpeg?q=50",
+			"price" : 290,
+			"name":"western frok",
+			"dress_color":"white",
+			"title": "Laptop",
+			"brand":"zara",
+			"content":"ye wehj d sh k ahfkd hs .hfd khsk hdk"
+
+		}, -->

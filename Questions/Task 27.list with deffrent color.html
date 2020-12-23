@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+</style>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="hsplit" >
+		<div style="margin:35px 5px;" >
+			<button ng-click="light_button()" >Change color</button>
+		</div>
+
+		<div style="margin:5px;">
+		 	<span class="material-icons" style="font-size: 100px;" ng-style="{'color':alternative_color}">
+				emoji_objects
+			</span>
+		</div>
+	</div>
+	
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	s=$scope
+	var list=["red", "yellow", "green", "black"]
+	$scope.alternative_color=list[0]
+	$scope.light_button=function(){
+		for(i in  list) {
+			if($scope.alternative_color==list[i]){
+				$scope.alternative_color=list[(parseInt(i)+1)%list.length]
+				break
+			}
+		}
+	}
+});
+</script>
+</body>
+</html>

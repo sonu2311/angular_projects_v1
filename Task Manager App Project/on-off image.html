@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+ div.hsplit:after {
+content: "";
+clear: both;
+display: table;
+}
+
+div.hsplit > div {
+	float: left;
+}
+
+</style>
+<body  ng-app="myApp" ng-controller="myCtrl">
+
+<div class="hsplit">
+
+  <div style="margin:50px 20px;">
+    <img src="https://i.imgur.com/vdW29oV.png" >
+    <img src="https://i.imgur.com/0UPwzzT.png" >
+   
+  </div>
+  
+  <div style="float:right">
+    <span class="material-icons" style="font-size:100px" ng-style='{"color": button_color ? "red":("blue")}' >
+      emoji_objects
+    </span>
+  </div>
+  
+</div>
+
+
+<script>
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	$scope.button_color=false
+  $scope.f=function(){
+  	$scope.button_color=!$scope.button_color
+  }
+	
+});
+</script>
+</body>
+</html>
